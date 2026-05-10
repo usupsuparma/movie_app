@@ -1,0 +1,14 @@
+import 'package:dartz/dartz.dart';
+import 'package:movie_app/common/failure.dart';
+import 'package:movie_app/domain/entities/tv_series.dart';
+import 'package:movie_app/domain/repositories/tv_series_repository.dart';
+
+class GetTvSeriesRecommendations {
+  final TvSeriesRepository repository;
+
+  GetTvSeriesRecommendations(this.repository);
+
+  Future<Either<Failure, List<TvSeries>>> execute(int id) {
+    return repository.getTvSeriesRecommendations(id);
+  }
+}
