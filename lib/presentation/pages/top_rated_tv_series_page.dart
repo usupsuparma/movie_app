@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/common/state_enum.dart';
-import 'package:movie_app/presentation/provider/top_rated_tv_series_notifier.dart';
-import 'package:movie_app/presentation/widgets/tv_series_card_list.dart';
+import 'package:g/common/state_enum.dart';
+import 'package:g/presentation/provider/top_rated_tv_series_notifier.dart';
+import 'package:g/presentation/widgets/tv_series_card_list.dart';
 import 'package:provider/provider.dart';
 
 class TopRatedTvSeriesPage extends StatefulWidget {

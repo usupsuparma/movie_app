@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:movie_app/common/state_enum.dart';
-import 'package:movie_app/domain/entities/tv_series.dart';
-import 'package:movie_app/domain/usecases/get_watchlist_tv_series.dart';
+import 'package:g/common/state_enum.dart';
+import 'package:g/domain/entities/tv_series.dart';
+import 'package:g/domain/usecases/get_watchlist_tv_series.dart';
 
 class WatchlistTvSeriesNotifier extends ChangeNotifier {
   WatchlistTvSeriesNotifier({required this.getWatchlistTvSeries});

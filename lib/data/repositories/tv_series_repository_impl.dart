@@ -1,14 +1,14 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:movie_app/common/exception.dart';
-import 'package:movie_app/common/failure.dart';
-import 'package:movie_app/data/datasources/tv_series_local_data_source.dart';
-import 'package:movie_app/data/datasources/tv_series_remote_data_source.dart';
-import 'package:movie_app/data/models/tv_series_table.dart';
-import 'package:movie_app/domain/entities/tv_series.dart';
-import 'package:movie_app/domain/entities/tv_series_detail.dart';
-import 'package:movie_app/domain/repositories/tv_series_repository.dart';
+import 'package:g/common/exception.dart';
+import 'package:g/common/failure.dart';
+import 'package:g/data/datasources/tv_series_local_data_source.dart';
+import 'package:g/data/datasources/tv_series_remote_data_source.dart';
+import 'package:g/data/models/tv_series_table.dart';
+import 'package:g/domain/entities/tv_series.dart';
+import 'package:g/domain/entities/tv_series_detail.dart';
+import 'package:g/domain/repositories/tv_series_repository.dart';
 
 class TvSeriesRepositoryImpl implements TvSeriesRepository {
   TvSeriesRepositoryImpl({

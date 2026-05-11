@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movie_app/domain/entities/tv_series.dart';
+import 'package:g/domain/entities/tv_series.dart';
 
 class TvSeriesModel extends Equatable {
   const TvSeriesModel({

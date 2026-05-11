@@ -1,6 +1,6 @@
-import 'package:movie_app/common/state_enum.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/usecases/get_top_rated_movies.dart';
+import 'package:g/common/state_enum.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/domain/usecases/get_top_rated_movies.dart';
 import 'package:flutter/foundation.dart';
 
 class TopRatedMoviesNotifier extends ChangeNotifier {
@@ -37,3 +37,4 @@ class TopRatedMoviesNotifier extends ChangeNotifier {
     );
   }
 }
+

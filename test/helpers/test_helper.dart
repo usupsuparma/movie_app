@@ -1,7 +1,7 @@
-import 'package:movie_app/data/datasources/db/database_helper.dart';
-import 'package:movie_app/data/datasources/movie_local_data_source.dart';
-import 'package:movie_app/data/datasources/movie_remote_data_source.dart';
-import 'package:movie_app/domain/repositories/movie_repository.dart';
+import 'package:g/data/datasources/db/database_helper.dart';
+import 'package:g/data/datasources/movie_local_data_source.dart';
+import 'package:g/data/datasources/movie_remote_data_source.dart';
+import 'package:g/domain/repositories/movie_repository.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
 

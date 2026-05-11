@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movie_app/common/failure.dart';
-import 'package:movie_app/common/state_enum.dart';
-import 'package:movie_app/domain/entities/tv_series.dart';
-import 'package:movie_app/domain/repositories/tv_series_repository.dart';
-import 'package:movie_app/domain/usecases/get_watchlist_tv_series.dart';
-import 'package:movie_app/presentation/provider/watchlist_tv_series_notifier.dart';
+import 'package:g/common/failure.dart';
+import 'package:g/common/state_enum.dart';
+import 'package:g/domain/entities/tv_series.dart';
+import 'package:g/domain/repositories/tv_series_repository.dart';
+import 'package:g/domain/usecases/get_watchlist_tv_series.dart';
+import 'package:g/presentation/provider/watchlist_tv_series_notifier.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 

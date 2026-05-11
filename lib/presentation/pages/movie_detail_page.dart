@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:movie_app/common/constants.dart';
-import 'package:movie_app/domain/entities/genre.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/entities/movie_detail.dart';
-import 'package:movie_app/presentation/provider/movie_detail_notifier.dart';
-import 'package:movie_app/common/state_enum.dart';
+import 'package:g/common/constants.dart';
+import 'package:g/domain/entities/genre.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/domain/entities/movie_detail.dart';
+import 'package:g/presentation/provider/movie_detail_notifier.dart';
+import 'package:g/common/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
@@ -303,3 +303,4 @@ class DetailContent extends StatelessWidget {
     }
   }
 }
+

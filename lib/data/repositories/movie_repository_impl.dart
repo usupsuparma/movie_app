@@ -1,14 +1,14 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:movie_app/common/exception.dart';
-import 'package:movie_app/common/failure.dart';
-import 'package:movie_app/data/datasources/movie_local_data_source.dart';
-import 'package:movie_app/data/datasources/movie_remote_data_source.dart';
-import 'package:movie_app/data/models/movie_table.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/entities/movie_detail.dart';
-import 'package:movie_app/domain/repositories/movie_repository.dart';
+import 'package:g/common/exception.dart';
+import 'package:g/common/failure.dart';
+import 'package:g/data/datasources/movie_local_data_source.dart';
+import 'package:g/data/datasources/movie_remote_data_source.dart';
+import 'package:g/data/models/movie_table.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/domain/entities/movie_detail.dart';
+import 'package:g/domain/repositories/movie_repository.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
@@ -127,3 +127,4 @@ class MovieRepositoryImpl implements MovieRepository {
     return Right(result.map((data) => data.toEntity()).toList());
   }
 }
+

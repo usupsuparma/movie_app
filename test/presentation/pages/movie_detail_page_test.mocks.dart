@@ -8,16 +8,16 @@ import 'dart:ui' as _i13;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i11;
-import 'package:movie_app/common/state_enum.dart' as _i9;
-import 'package:movie_app/domain/entities/movie.dart' as _i10;
-import 'package:movie_app/domain/entities/movie_detail.dart' as _i7;
-import 'package:movie_app/domain/usecases/get_movie_detail.dart' as _i2;
-import 'package:movie_app/domain/usecases/get_movie_recommendations.dart'
+import 'package:g/common/state_enum.dart' as _i9;
+import 'package:g/domain/entities/movie.dart' as _i10;
+import 'package:g/domain/entities/movie_detail.dart' as _i7;
+import 'package:g/domain/usecases/get_movie_detail.dart' as _i2;
+import 'package:g/domain/usecases/get_movie_recommendations.dart'
     as _i3;
-import 'package:movie_app/domain/usecases/get_watchlist_status.dart' as _i4;
-import 'package:movie_app/domain/usecases/remove_watchlist.dart' as _i6;
-import 'package:movie_app/domain/usecases/save_watchlist.dart' as _i5;
-import 'package:movie_app/presentation/provider/movie_detail_notifier.dart'
+import 'package:g/domain/usecases/get_watchlist_status.dart' as _i4;
+import 'package:g/domain/usecases/remove_watchlist.dart' as _i6;
+import 'package:g/domain/usecases/save_watchlist.dart' as _i5;
+import 'package:g/presentation/provider/movie_detail_notifier.dart'
     as _i8;
 
 // ignore_for_file: type=lint

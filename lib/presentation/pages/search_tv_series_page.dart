@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/common/constants.dart';
-import 'package:movie_app/common/state_enum.dart';
-import 'package:movie_app/presentation/provider/tv_series_search_notifier.dart';
-import 'package:movie_app/presentation/widgets/tv_series_card_list.dart';
+import 'package:g/common/constants.dart';
+import 'package:g/common/state_enum.dart';
+import 'package:g/presentation/provider/tv_series_search_notifier.dart';
+import 'package:g/presentation/widgets/tv_series_card_list.dart';
 import 'package:provider/provider.dart';
 
 class SearchTvSeriesPage extends StatelessWidget {

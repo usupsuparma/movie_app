@@ -1,35 +1,35 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/common/constants.dart';
-import 'package:movie_app/common/utils.dart';
-import 'package:movie_app/presentation/pages/about_page.dart';
-import 'package:movie_app/presentation/pages/home_movie_page.dart';
-import 'package:movie_app/presentation/pages/home_tv_series_page.dart';
-import 'package:movie_app/presentation/pages/movie_detail_page.dart';
-import 'package:movie_app/presentation/pages/popular_movies_page.dart';
-import 'package:movie_app/presentation/pages/popular_tv_series_page.dart';
-import 'package:movie_app/presentation/pages/search_page.dart';
-import 'package:movie_app/presentation/pages/search_tv_series_page.dart';
-import 'package:movie_app/presentation/pages/top_rated_movies_page.dart';
-import 'package:movie_app/presentation/pages/top_rated_tv_series_page.dart';
-import 'package:movie_app/presentation/pages/tv_series_detail_page.dart';
-import 'package:movie_app/presentation/pages/watchlist_movies_page.dart';
-import 'package:movie_app/presentation/pages/watchlist_tv_series_page.dart';
-import 'package:movie_app/presentation/provider/movie_detail_notifier.dart';
-import 'package:movie_app/presentation/provider/movie_list_notifier.dart';
-import 'package:movie_app/presentation/provider/movie_search_notifier.dart';
-import 'package:movie_app/presentation/provider/popular_movies_notifier.dart';
-import 'package:movie_app/presentation/provider/top_rated_movies_notifier.dart';
-import 'package:movie_app/presentation/provider/popular_tv_series_notifier.dart';
-import 'package:movie_app/presentation/provider/top_rated_tv_series_notifier.dart';
-import 'package:movie_app/presentation/provider/tv_series_detail_notifier.dart';
-import 'package:movie_app/presentation/provider/tv_series_list_notifier.dart';
-import 'package:movie_app/presentation/provider/tv_series_search_notifier.dart';
-import 'package:movie_app/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:movie_app/presentation/provider/watchlist_tv_series_notifier.dart';
+import 'package:g/common/constants.dart';
+import 'package:g/common/utils.dart';
+import 'package:g/presentation/pages/about_page.dart';
+import 'package:g/presentation/pages/home_movie_page.dart';
+import 'package:g/presentation/pages/home_tv_series_page.dart';
+import 'package:g/presentation/pages/movie_detail_page.dart';
+import 'package:g/presentation/pages/popular_movies_page.dart';
+import 'package:g/presentation/pages/popular_tv_series_page.dart';
+import 'package:g/presentation/pages/search_page.dart';
+import 'package:g/presentation/pages/search_tv_series_page.dart';
+import 'package:g/presentation/pages/top_rated_movies_page.dart';
+import 'package:g/presentation/pages/top_rated_tv_series_page.dart';
+import 'package:g/presentation/pages/tv_series_detail_page.dart';
+import 'package:g/presentation/pages/watchlist_movies_page.dart';
+import 'package:g/presentation/pages/watchlist_tv_series_page.dart';
+import 'package:g/presentation/provider/movie_detail_notifier.dart';
+import 'package:g/presentation/provider/movie_list_notifier.dart';
+import 'package:g/presentation/provider/movie_search_notifier.dart';
+import 'package:g/presentation/provider/popular_movies_notifier.dart';
+import 'package:g/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:g/presentation/provider/popular_tv_series_notifier.dart';
+import 'package:g/presentation/provider/top_rated_tv_series_notifier.dart';
+import 'package:g/presentation/provider/tv_series_detail_notifier.dart';
+import 'package:g/presentation/provider/tv_series_list_notifier.dart';
+import 'package:g/presentation/provider/tv_series_search_notifier.dart';
+import 'package:g/presentation/provider/watchlist_movie_notifier.dart';
+import 'package:g/presentation/provider/watchlist_tv_series_notifier.dart';
 import 'package:provider/provider.dart';
-import 'package:movie_app/injection.dart' as di;
+import 'package:g/injection.dart' as di;
 
 void main() {
   di.init();
@@ -139,3 +139,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

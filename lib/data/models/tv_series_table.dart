@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:movie_app/domain/entities/tv_series.dart';
-import 'package:movie_app/domain/entities/tv_series_detail.dart';
+import 'package:g/domain/entities/tv_series.dart';
+import 'package:g/domain/entities/tv_series_detail.dart';
 
 class TvSeriesTable extends Equatable {
   static const tvMediaType = 'tv';

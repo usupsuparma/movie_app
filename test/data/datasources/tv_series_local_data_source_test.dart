@@ -1,13 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movie_app/common/exception.dart';
-import 'package:movie_app/data/datasources/db/database_helper.dart';
-import 'package:movie_app/data/datasources/tv_series_local_data_source.dart';
+import 'package:g/common/exception.dart';
+import 'package:g/data/datasources/db/database_helper.dart';
+import 'package:g/data/datasources/tv_series_local_data_source.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 
 class FakeDatabaseHelper implements DatabaseHelper {
   int insertResult = 1;
   Object? insertError;
+  int removeResult = 1;
+  Object? removeError;
   Map<String, dynamic>? byIdResult;
   List<Map<String, dynamic>> listResult = [];
 
@@ -31,7 +33,12 @@ class FakeDatabaseHelper implements DatabaseHelper {
   ) async => listResult;
 
   @override
-  Future<int> removeWatchlist(int id, String mediaType) async => 1;
+  Future<int> removeWatchlist(int id, String mediaType) async {
+    if (removeError != null) {
+      throw removeError!;
+    }
+    return removeResult;
+  }
 
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
@@ -82,5 +89,31 @@ void main() {
     final result = await dataSource.getWatchlistTvSeries();
 
     expect(result, [tTvSeriesTable]);
+  });
+
+  test('removeWatchlist should return success message', () async {
+    mockDatabaseHelper.removeResult = 1;
+
+    final result = await dataSource.removeWatchlist(tTvSeriesTable);
+
+    expect(result, 'Removed from Watchlist');
+  });
+
+  test(
+    'removeWatchlist should throw DatabaseException when remove fails',
+    () async {
+      mockDatabaseHelper.removeError = Exception('Failed');
+
+      expect(
+        () => dataSource.removeWatchlist(tTvSeriesTable),
+        throwsA(isA<DatabaseException>()),
+      );
+    },
+  );
+
+  test('getTvSeriesById should return null when data not found', () async {
+    final result = await dataSource.getTvSeriesById(1);
+
+    expect(result, isNull);
   });
 }

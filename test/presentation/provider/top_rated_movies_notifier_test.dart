@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_app/common/failure.dart';
-import 'package:movie_app/common/state_enum.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/usecases/get_top_rated_movies.dart';
-import 'package:movie_app/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:g/common/failure.dart';
+import 'package:g/common/state_enum.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/domain/usecases/get_top_rated_movies.dart';
+import 'package:g/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

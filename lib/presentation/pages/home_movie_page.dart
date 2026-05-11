@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:movie_app/common/constants.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/presentation/pages/about_page.dart';
-import 'package:movie_app/presentation/pages/home_tv_series_page.dart';
-import 'package:movie_app/presentation/pages/movie_detail_page.dart';
-import 'package:movie_app/presentation/pages/popular_movies_page.dart';
-import 'package:movie_app/presentation/pages/search_page.dart';
-import 'package:movie_app/presentation/pages/top_rated_movies_page.dart';
-import 'package:movie_app/presentation/pages/watchlist_movies_page.dart';
-import 'package:movie_app/presentation/pages/watchlist_tv_series_page.dart';
-import 'package:movie_app/presentation/provider/movie_list_notifier.dart';
-import 'package:movie_app/common/state_enum.dart';
+import 'package:g/common/constants.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/presentation/pages/about_page.dart';
+import 'package:g/presentation/pages/home_tv_series_page.dart';
+import 'package:g/presentation/pages/movie_detail_page.dart';
+import 'package:g/presentation/pages/popular_movies_page.dart';
+import 'package:g/presentation/pages/search_page.dart';
+import 'package:g/presentation/pages/top_rated_movies_page.dart';
+import 'package:g/presentation/pages/watchlist_movies_page.dart';
+import 'package:g/presentation/pages/watchlist_tv_series_page.dart';
+import 'package:g/presentation/provider/movie_list_notifier.dart';
+import 'package:g/common/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -222,3 +222,4 @@ class MovieList extends StatelessWidget {
     );
   }
 }
+

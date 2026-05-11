@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/repositories/movie_repository.dart';
-import 'package:movie_app/common/failure.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/domain/repositories/movie_repository.dart';
+import 'package:g/common/failure.dart';
 
 class GetMovieRecommendations {
   final MovieRepository repository;
@@ -12,3 +12,4 @@ class GetMovieRecommendations {
     return repository.getMovieRecommendations(id);
   }
 }
+

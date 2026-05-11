@@ -3,8 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:movie_app/common/exception.dart';
-import 'package:movie_app/data/datasources/tv_series_remote_data_source.dart';
+import 'package:g/common/exception.dart';
+import 'package:g/data/datasources/tv_series_remote_data_source.dart';
 
 class FakeHttpClient extends http.BaseClient {
   final Map<String, http.Response> responses = {};
@@ -120,6 +120,18 @@ void main() {
     expect(result.first.id, 1);
   });
 
+  test('getPopularTvSeries should throw ServerException on error', () async {
+    mockHttpClient.responses['$baseUrl/tv/popular?$apiKey'] = http.Response(
+      'Not Found',
+      404,
+    );
+
+    expect(
+      () => dataSource.getPopularTvSeries(),
+      throwsA(isA<ServerException>()),
+    );
+  });
+
   test('getTopRatedTvSeries should hit top rated endpoint', () async {
     mockHttpClient.responses['$baseUrl/tv/top_rated?$apiKey'] = http.Response(
       responseBody,
@@ -129,6 +141,18 @@ void main() {
     final result = await dataSource.getTopRatedTvSeries();
 
     expect(result.first.voteAverage, 8.5);
+  });
+
+  test('getTopRatedTvSeries should throw ServerException on error', () async {
+    mockHttpClient.responses['$baseUrl/tv/top_rated?$apiKey'] = http.Response(
+      'Not Found',
+      500,
+    );
+
+    expect(
+      () => dataSource.getTopRatedTvSeries(),
+      throwsA(isA<ServerException>()),
+    );
   });
 
   test('getTvSeriesDetail should return tv series detail response', () async {
@@ -143,6 +167,18 @@ void main() {
     expect(result.numberOfEpisodes, 8);
   });
 
+  test('getTvSeriesDetail should throw ServerException on error', () async {
+    mockHttpClient.responses['$baseUrl/tv/1?$apiKey'] = http.Response(
+      'Not Found',
+      404,
+    );
+
+    expect(
+      () => dataSource.getTvSeriesDetail(1),
+      throwsA(isA<ServerException>()),
+    );
+  });
+
   test(
     'getTvSeriesRecommendations should return list of recommendations',
     () async {
@@ -155,6 +191,19 @@ void main() {
     },
   );
 
+  test(
+    'getTvSeriesRecommendations should throw ServerException on error',
+    () async {
+      mockHttpClient.responses['$baseUrl/tv/1/recommendations?$apiKey'] =
+          http.Response('Not Found', 500);
+
+      expect(
+        () => dataSource.getTvSeriesRecommendations(1),
+        throwsA(isA<ServerException>()),
+      );
+    },
+  );
+
   test('searchTvSeries should return search results', () async {
     mockHttpClient.responses['$baseUrl/search/tv?$apiKey&query=query'] =
         http.Response(responseBody, 200);
@@ -162,5 +211,15 @@ void main() {
     final result = await dataSource.searchTvSeries('query');
 
     expect(result.first.name, 'Sample TV Series');
+  });
+
+  test('searchTvSeries should throw ServerException on error', () async {
+    mockHttpClient.responses['$baseUrl/search/tv?$apiKey&query=query'] =
+        http.Response('Not Found', 404);
+
+    expect(
+      () => dataSource.searchTvSeries('query'),
+      throwsA(isA<ServerException>()),
+    );
   });
 }

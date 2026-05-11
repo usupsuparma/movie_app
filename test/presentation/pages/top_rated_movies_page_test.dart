@@ -1,7 +1,7 @@
-import 'package:movie_app/common/state_enum.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/presentation/pages/top_rated_movies_page.dart';
-import 'package:movie_app/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:g/common/state_enum.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/presentation/pages/top_rated_movies_page.dart';
+import 'package:g/presentation/provider/top_rated_movies_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

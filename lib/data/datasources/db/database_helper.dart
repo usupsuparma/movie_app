@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:movie_app/data/models/movie_table.dart';
+import 'package:g/data/models/movie_table.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
@@ -105,3 +105,4 @@ class DatabaseHelper {
     return results;
   }
 }
+

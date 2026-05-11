@@ -1,6 +1,6 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:movie_app/domain/entities/genre.dart';
+import 'package:g/domain/entities/genre.dart';
 
 class GenreModel extends Equatable {
   GenreModel({
@@ -28,3 +28,4 @@ class GenreModel extends Equatable {
   @override
   List<Object?> get props => [id, name];
 }
+

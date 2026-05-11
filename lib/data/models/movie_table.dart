@@ -1,7 +1,7 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/entities/movie_detail.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/domain/entities/movie_detail.dart';
 
 class MovieTable extends Equatable {
   static const movieMediaType = 'movie';
@@ -53,3 +53,4 @@ class MovieTable extends Equatable {
   @override
   List<Object?> get props => [id, title, posterPath, overview, mediaType];
 }
+

@@ -1,6 +1,6 @@
-import 'package:movie_app/common/state_enum.dart';
-import 'package:movie_app/presentation/provider/popular_movies_notifier.dart';
-import 'package:movie_app/presentation/widgets/movie_card_list.dart';
+import 'package:g/common/state_enum.dart';
+import 'package:g/presentation/provider/popular_movies_notifier.dart';
+import 'package:g/presentation/widgets/movie_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -54,3 +54,4 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
     );
   }
 }
+

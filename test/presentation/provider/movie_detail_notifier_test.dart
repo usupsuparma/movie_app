@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_app/domain/entities/movie.dart';
-import 'package:movie_app/domain/usecases/get_movie_detail.dart';
-import 'package:movie_app/domain/usecases/get_movie_recommendations.dart';
-import 'package:movie_app/common/failure.dart';
-import 'package:movie_app/domain/usecases/get_watchlist_status.dart';
-import 'package:movie_app/domain/usecases/remove_watchlist.dart';
-import 'package:movie_app/domain/usecases/save_watchlist.dart';
-import 'package:movie_app/presentation/provider/movie_detail_notifier.dart';
-import 'package:movie_app/common/state_enum.dart';
+import 'package:g/domain/entities/movie.dart';
+import 'package:g/domain/usecases/get_movie_detail.dart';
+import 'package:g/domain/usecases/get_movie_recommendations.dart';
+import 'package:g/common/failure.dart';
+import 'package:g/domain/usecases/get_watchlist_status.dart';
+import 'package:g/domain/usecases/remove_watchlist.dart';
+import 'package:g/domain/usecases/save_watchlist.dart';
+import 'package:g/presentation/provider/movie_detail_notifier.dart';
+import 'package:g/common/state_enum.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -216,6 +216,24 @@ void main() {
       expect(provider.watchlistMessage, 'Failed');
       expect(listenerCallCount, 1);
     });
+
+    test(
+      'should update watchlist message when remove watchlist failed',
+      () async {
+        // arrange
+        when(
+          mockRemoveWatchlist.execute(testMovieDetail),
+        ).thenAnswer((_) async => Left(DatabaseFailure('Remove failed')));
+        when(
+          mockGetWatchlistStatus.execute(testMovieDetail.id),
+        ).thenAnswer((_) async => true);
+        // act
+        await provider.removeFromWatchlist(testMovieDetail);
+        // assert
+        expect(provider.watchlistMessage, 'Remove failed');
+        expect(listenerCallCount, 1);
+      },
+    );
   });
 
   group('on Error', () {
