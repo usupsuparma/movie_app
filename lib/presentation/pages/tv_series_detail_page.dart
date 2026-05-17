@@ -1,14 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:g/common/constants.dart';
-import 'package:g/common/state_enum.dart';
 import 'package:g/domain/entities/genre.dart';
 import 'package:g/domain/entities/season.dart';
 import 'package:g/domain/entities/tv_series.dart';
 import 'package:g/domain/entities/tv_series_detail.dart';
-import 'package:g/presentation/provider/tv_series_detail_notifier.dart';
-import 'package:provider/provider.dart';
+import 'package:g/presentation/bloc/tv_series/tv_series_detail_bloc.dart';
+import 'package:g/presentation/bloc/tv_series/tv_series_detail_event.dart';
+import 'package:g/presentation/bloc/tv_series/tv_series_detail_state.dart';
 
 class TvSeriesDetailPage extends StatefulWidget {
   static const routeName = '/tv-series-detail';
@@ -26,30 +27,60 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<TvSeriesDetailNotifier>(context, listen: false)
-          .fetchTvSeriesDetail(widget.id);
-      Provider.of<TvSeriesDetailNotifier>(context, listen: false)
-          .loadWatchlistStatus(widget.id);
+      context.read<TvSeriesDetailBloc>().add(FetchTvSeriesDetail(widget.id));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<TvSeriesDetailNotifier>(
-        builder: (context, provider, child) {
-          if (provider.tvSeriesState == RequestState.Loading) {
+      body: BlocBuilder<TvSeriesDetailBloc, TvSeriesDetailState>(
+        builder: (context, state) {
+          if (state is TvSeriesDetailLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (provider.tvSeriesState == RequestState.Loaded) {
+          } else if (state is TvSeriesDetailLoaded) {
             return SafeArea(
-              child: TvSeriesDetailContent(
-                provider.tvSeries,
-                provider.recommendations,
-                provider.isAddedToWatchlist,
+              child: BlocListener<TvSeriesDetailBloc, TvSeriesDetailState>(
+                listenWhen: (previous, current) {
+                  if (previous is TvSeriesDetailLoaded &&
+                      current is TvSeriesDetailLoaded) {
+                    return previous.watchlistMessage !=
+                            current.watchlistMessage &&
+                        current.watchlistMessage.isNotEmpty;
+                  }
+                  return false;
+                },
+                listener: (context, state) {
+                  if (state is TvSeriesDetailLoaded) {
+                    final message = state.watchlistMessage;
+                    if (message ==
+                            TvSeriesDetailBloc.watchlistAddSuccessMessage ||
+                        message ==
+                            TvSeriesDetailBloc.watchlistRemoveSuccessMessage) {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(message)));
+                    } else if (message.isNotEmpty) {
+                      showDialog(
+                        context: context,
+                        builder: (context) =>
+                            AlertDialog(content: Text(message)),
+                      );
+                    }
+                  }
+                },
+                child: TvSeriesDetailContent(
+                  state.tvSeries,
+                  state.recommendations,
+                  state.isAddedToWatchlist,
+                ),
               ),
             );
           }
-          return Center(child: Text(provider.message));
+          if (state is TvSeriesDetailError) {
+            return Center(child: Text(state.message));
+          }
+          return const SizedBox.shrink();
         },
       ),
     );
@@ -103,41 +134,12 @@ class TvSeriesDetailContent extends StatelessWidget {
                           children: [
                             Text(tvSeries.name, style: kHeading5),
                             FilledButton(
-                              onPressed: () async {
+                              onPressed: () {
+                                final bloc = context.read<TvSeriesDetailBloc>();
                                 if (!isAddedWatchlist) {
-                                  await Provider.of<TvSeriesDetailNotifier>(
-                                    context,
-                                    listen: false,
-                                  ).addWatchlist(tvSeries);
+                                  bloc.add(AddTvSeriesWatchlist(tvSeries));
                                 } else {
-                                  await Provider.of<TvSeriesDetailNotifier>(
-                                    context,
-                                    listen: false,
-                                  ).removeFromWatchlist(tvSeries);
-                                }
-
-                                final message =
-                                    Provider.of<TvSeriesDetailNotifier>(
-                                  context,
-                                  listen: false,
-                                ).watchlistMessage;
-
-                                if (message ==
-                                        TvSeriesDetailNotifier
-                                            .watchlistAddSuccessMessage ||
-                                    message ==
-                                        TvSeriesDetailNotifier
-                                            .watchlistRemoveSuccessMessage) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text(message)),
-                                  );
-                                } else {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) => AlertDialog(
-                                      content: Text(message),
-                                    ),
-                                  );
+                                  bloc.add(RemoveTvSeriesWatchlist(tvSeries));
                                 }
                               },
                               child: Row(
@@ -179,19 +181,9 @@ class TvSeriesDetailContent extends StatelessWidget {
                             Text(_showSeasons(tvSeries.seasons)),
                             const SizedBox(height: 16),
                             Text('Recommendations', style: kHeading6),
-                            Consumer<TvSeriesDetailNotifier>(
-                              builder: (context, data, child) {
-                                if (data.recommendationState ==
-                                    RequestState.Loading) {
-                                  return const Center(
-                                    child: CircularProgressIndicator(),
-                                  );
-                                } else if (data.recommendationState ==
-                                    RequestState.Error) {
-                                  return Text(data.message);
-                                } else if (data.recommendationState ==
-                                    RequestState.Loaded) {
-                                  return SizedBox(
+                            recommendations.isEmpty
+                                ? const SizedBox.shrink()
+                                : SizedBox(
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
@@ -230,11 +222,7 @@ class TvSeriesDetailContent extends StatelessWidget {
                                       },
                                       itemCount: recommendations.length,
                                     ),
-                                  );
-                                }
-                                return const SizedBox.shrink();
-                              },
-                            ),
+                                  ),
                           ],
                         ),
                       ),

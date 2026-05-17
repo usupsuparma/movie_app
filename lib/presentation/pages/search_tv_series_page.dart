@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g/common/constants.dart';
-import 'package:g/common/state_enum.dart';
-import 'package:g/presentation/provider/tv_series_search_notifier.dart';
+import 'package:g/presentation/bloc/tv_series/tv_series_search_bloc.dart';
+import 'package:g/presentation/bloc/tv_series/tv_series_search_event.dart';
+import 'package:g/presentation/bloc/tv_series/tv_series_search_state.dart';
 import 'package:g/presentation/widgets/tv_series_card_list.dart';
-import 'package:provider/provider.dart';
 
 class SearchTvSeriesPage extends StatelessWidget {
   static const routeName = '/search-tv-series';
@@ -21,8 +22,9 @@ class SearchTvSeriesPage extends StatelessWidget {
           children: [
             TextField(
               onSubmitted: (query) {
-                Provider.of<TvSeriesSearchNotifier>(context, listen: false)
-                    .fetchTvSeriesSearch(query);
+                context.read<TvSeriesSearchBloc>().add(
+                  SearchTvSeriesEvent(query),
+                );
               },
               decoration: const InputDecoration(
                 hintText: 'Search title',
@@ -33,17 +35,17 @@ class SearchTvSeriesPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text('Search Result', style: kHeading6),
-            Consumer<TvSeriesSearchNotifier>(
-              builder: (context, data, child) {
-                if (data.state == RequestState.Loading) {
+            BlocBuilder<TvSeriesSearchBloc, TvSeriesSearchState>(
+              builder: (context, state) {
+                if (state is TvSeriesSearchLoading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (data.state == RequestState.Loaded) {
+                } else if (state is TvSeriesSearchLoaded) {
                   return Expanded(
                     child: ListView.builder(
                       padding: const EdgeInsets.all(8),
                       itemBuilder: (context, index) =>
-                          TvSeriesCard(data.searchResult[index]),
-                      itemCount: data.searchResult.length,
+                          TvSeriesCard(state.results[index]),
+                      itemCount: state.results.length,
                     ),
                   );
                 }
