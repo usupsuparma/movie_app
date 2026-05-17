@@ -51,4 +51,15 @@ void main() {
       ],
     );
   });
+
+  group('FetchWatchlistTvSeries event', () {
+    test('has correct props', () {
+      final event = FetchWatchlistTvSeries();
+      expect(event.props, isEmpty);
+    });
+
+    test('supports equality', () {
+      expect(FetchWatchlistTvSeries(), equals(FetchWatchlistTvSeries()));
+    });
+  });
 }

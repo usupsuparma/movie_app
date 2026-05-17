@@ -219,4 +219,30 @@ void main() {
       expect: () => [],
     );
   });
+
+  group('TvSeriesDetailEvent props', () {
+    test('FetchTvSeriesDetail has correct props', () {
+      final event = FetchTvSeriesDetail(tId);
+      expect(event.props, [tId]);
+      expect(FetchTvSeriesDetail(tId), equals(FetchTvSeriesDetail(tId)));
+    });
+
+    test('AddTvSeriesWatchlist has correct props', () {
+      final event = AddTvSeriesWatchlist(tTvSeriesDetail);
+      expect(event.props, [tTvSeriesDetail]);
+      expect(
+        AddTvSeriesWatchlist(tTvSeriesDetail),
+        equals(AddTvSeriesWatchlist(tTvSeriesDetail)),
+      );
+    });
+
+    test('RemoveTvSeriesWatchlist has correct props', () {
+      final event = RemoveTvSeriesWatchlist(tTvSeriesDetail);
+      expect(event.props, [tTvSeriesDetail]);
+      expect(
+        RemoveTvSeriesWatchlist(tTvSeriesDetail),
+        equals(RemoveTvSeriesWatchlist(tTvSeriesDetail)),
+      );
+    });
+  });
 }

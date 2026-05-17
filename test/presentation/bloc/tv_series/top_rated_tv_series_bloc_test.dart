@@ -51,4 +51,15 @@ void main() {
       ],
     );
   });
+
+  group('FetchTopRatedTvSeries event', () {
+    test('has correct props', () {
+      final event = FetchTopRatedTvSeries();
+      expect(event.props, isEmpty);
+    });
+
+    test('supports equality', () {
+      expect(FetchTopRatedTvSeries(), equals(FetchTopRatedTvSeries()));
+    });
+  });
 }

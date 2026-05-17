@@ -122,4 +122,18 @@ void main() {
       ],
     );
   });
+
+  group('TvSeriesListEvent props', () {
+    test('FetchOnTheAirTvSeries has correct props', () {
+      expect(FetchOnTheAirTvSeries().props, isEmpty);
+    });
+
+    test('FetchPopularTvSeriesList has correct props', () {
+      expect(FetchPopularTvSeriesList().props, isEmpty);
+    });
+
+    test('FetchTopRatedTvSeriesList has correct props', () {
+      expect(FetchTopRatedTvSeriesList().props, isEmpty);
+    });
+  });
 }

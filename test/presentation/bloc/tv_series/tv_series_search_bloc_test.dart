@@ -53,4 +53,17 @@ void main() {
       ],
     );
   });
+
+  group('SearchTvSeriesEvent props', () {
+    const tQuery = 'Breaking Bad';
+
+    test('has correct props', () {
+      final event = SearchTvSeriesEvent(tQuery);
+      expect(event.props, [tQuery]);
+    });
+
+    test('supports equality', () {
+      expect(SearchTvSeriesEvent(tQuery), equals(SearchTvSeriesEvent(tQuery)));
+    });
+  });
 }
