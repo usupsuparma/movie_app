@@ -145,9 +145,9 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (_) => const HomeTvSeriesPage(),
               );
-            case PopularMoviesPage.ROUTE_NAME:
+            case PopularMoviesPage.routeName:
               return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
-            case TopRatedMoviesPage.ROUTE_NAME:
+            case TopRatedMoviesPage.routeName:
               return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
             case PopularTvSeriesPage.routeName:
               return CupertinoPageRoute(
@@ -157,7 +157,7 @@ class MyApp extends StatelessWidget {
               return CupertinoPageRoute(
                 builder: (_) => const TopRatedTvSeriesPage(),
               );
-            case MovieDetailPage.ROUTE_NAME:
+            case MovieDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => MovieDetailPage(id: id),
@@ -169,19 +169,19 @@ class MyApp extends StatelessWidget {
                 builder: (_) => TvSeriesDetailPage(id: id),
                 settings: settings,
               );
-            case SearchPage.ROUTE_NAME:
+            case SearchPage.routeName:
               return CupertinoPageRoute(builder: (_) => SearchPage());
             case SearchTvSeriesPage.routeName:
               return CupertinoPageRoute(
                 builder: (_) => const SearchTvSeriesPage(),
               );
-            case WatchlistMoviesPage.ROUTE_NAME:
+            case WatchlistMoviesPage.routeName:
               return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
             case WatchlistTvSeriesPage.routeName:
               return MaterialPageRoute(
                 builder: (_) => const WatchlistTvSeriesPage(),
               );
-            case AboutPage.ROUTE_NAME:
+            case AboutPage.routeName:
               return MaterialPageRoute(builder: (_) => AboutPage());
             default:
               return MaterialPageRoute(

@@ -27,6 +27,7 @@ class _TvSeriesDetailPageState extends State<TvSeriesDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
+      if (!mounted) return;
       context.read<TvSeriesDetailBloc>().add(FetchTvSeriesDetail(widget.id));
     });
   }
@@ -105,7 +106,7 @@ class TvSeriesDetailContent extends StatelessWidget {
     return Stack(
       children: [
         CachedNetworkImage(
-          imageUrl: '$BASE_IMAGE_URL${tvSeries.posterPath}',
+          imageUrl: '$baseImageUrl${tvSeries.posterPath}',
           width: screenWidth,
           placeholder: (context, url) =>
               const Center(child: CircularProgressIndicator()),
@@ -205,7 +206,7 @@ class TvSeriesDetailContent extends StatelessWidget {
                                                   ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    '$BASE_IMAGE_URL${item.posterPath}',
+                                                    '$baseImageUrl${item.posterPath}',
                                                 placeholder: (context, url) =>
                                                     const Center(
                                                       child:

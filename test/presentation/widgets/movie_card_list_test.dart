@@ -21,7 +21,7 @@ Widget _makeTestableWidget({
   return MaterialApp(
     navigatorObservers: [observer],
     onGenerateRoute: (settings) {
-      if (settings.name == MovieDetailPage.ROUTE_NAME) {
+      if (settings.name == MovieDetailPage.routeName) {
         return MaterialPageRoute<void>(
           settings: settings,
           builder: (_) => const Scaffold(body: Text('movie detail page')),
@@ -99,24 +99,21 @@ void main() {
   testWidgets(
     'MovieCard should show fallback text when title or overview is null',
     (WidgetTester tester) async {
-      final movie =
-          Movie(
-              adult: false,
-              backdropPath: '/backdrop.jpg',
-              genreIds: const [1, 2],
-              id: 1,
-              originalTitle: 'Original Title',
-              overview: 'Movie overview',
-              popularity: 10,
-              posterPath: '/poster.jpg',
-              releaseDate: '2020-01-01',
-              title: 'Movie Title',
-              video: false,
-              voteAverage: 8,
-              voteCount: 100,
-            )
-            ..title = null
-            ..overview = null;
+      final movie = Movie(
+        adult: false,
+        backdropPath: '/backdrop.jpg',
+        genreIds: const [1, 2],
+        id: 1,
+        originalTitle: 'Original Title',
+        overview: null,
+        popularity: 10,
+        posterPath: '/poster.jpg',
+        releaseDate: '2020-01-01',
+        title: null,
+        video: false,
+        voteAverage: 8,
+        voteCount: 100,
+      );
       final observer = TestNavigatorObserver();
 
       await tester.pumpWidget(

@@ -5,8 +5,8 @@ import 'package:g/common/constants.dart';
 void main() {
   group('Constants', () {
     group('URLs', () {
-      test('BASE_IMAGE_URL should have correct value', () {
-        expect(BASE_IMAGE_URL, 'https://image.tmdb.org/t/p/w500');
+      test('baseImageUrl should have correct value', () {
+        expect(baseImageUrl, 'https://image.tmdb.org/t/p/w500');
       });
     });
 

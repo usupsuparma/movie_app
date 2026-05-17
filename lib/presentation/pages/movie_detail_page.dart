@@ -11,13 +11,13 @@ import 'package:g/presentation/bloc/movie/movie_detail_event.dart';
 import 'package:g/presentation/bloc/movie/movie_detail_state.dart';
 
 class MovieDetailPage extends StatefulWidget {
-  static const ROUTE_NAME = '/detail';
+  static const routeName = '/detail';
 
   final int id;
-  MovieDetailPage({required this.id});
+  const MovieDetailPage({super.key, required this.id});
 
   @override
-  _MovieDetailPageState createState() => _MovieDetailPageState();
+  State<MovieDetailPage> createState() => _MovieDetailPageState();
 }
 
 class _MovieDetailPageState extends State<MovieDetailPage> {
@@ -25,6 +25,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
+      if (!mounted) return;
       context.read<MovieDetailBloc>().add(FetchMovieDetail(widget.id));
     });
   }
@@ -90,7 +91,12 @@ class DetailContent extends StatelessWidget {
   final List<Movie> recommendations;
   final bool isAddedWatchlist;
 
-  DetailContent(this.movie, this.recommendations, this.isAddedWatchlist);
+  const DetailContent(
+    this.movie,
+    this.recommendations,
+    this.isAddedWatchlist, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -164,7 +170,7 @@ class DetailContent extends StatelessWidget {
                             Text('Recommendations', style: kHeading6),
                             recommendations.isEmpty
                                 ? Container()
-                                : Container(
+                                : SizedBox(
                                     height: 150,
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
@@ -176,7 +182,7 @@ class DetailContent extends StatelessWidget {
                                             onTap: () {
                                               Navigator.pushReplacementNamed(
                                                 context,
-                                                MovieDetailPage.ROUTE_NAME,
+                                                MovieDetailPage.routeName,
                                                 arguments: movie.id,
                                               );
                                             },
@@ -244,7 +250,7 @@ class DetailContent extends StatelessWidget {
   String _showGenres(List<Genre> genres) {
     String result = '';
     for (var genre in genres) {
-      result += genre.name + ', ';
+      result += '${genre.name}, ';
     }
 
     if (result.isEmpty) {

@@ -11,7 +11,7 @@ class MovieTable extends Equatable {
   final String? overview;
   final String mediaType;
 
-  MovieTable({
+  const MovieTable({
     required this.id,
     required this.title,
     required this.posterPath,

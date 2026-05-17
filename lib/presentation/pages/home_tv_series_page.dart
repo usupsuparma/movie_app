@@ -34,6 +34,7 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
+      if (!mounted) return;
       context.read<TvSeriesListBloc>().add(FetchOnTheAirTvSeries());
       context.read<PopularTvSeriesBloc>().add(FetchPopularTvSeries());
       context.read<TopRatedTvSeriesBloc>().add(FetchTopRatedTvSeries());
@@ -73,7 +74,7 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
               leading: const Icon(Icons.save_alt),
               title: const Text('Watchlist Movies'),
               onTap: () {
-                Navigator.pushNamed(context, WatchlistMoviesPage.ROUTE_NAME);
+                Navigator.pushNamed(context, WatchlistMoviesPage.routeName);
               },
             ),
             ListTile(
@@ -85,7 +86,7 @@ class _HomeTvSeriesPageState extends State<HomeTvSeriesPage> {
             ),
             ListTile(
               onTap: () {
-                Navigator.pushNamed(context, AboutPage.ROUTE_NAME);
+                Navigator.pushNamed(context, AboutPage.routeName);
               },
               leading: const Icon(Icons.info_outline),
               title: const Text('About'),
@@ -211,7 +212,7 @@ class TvSeriesList extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$BASE_IMAGE_URL${item.posterPath}',
+                  imageUrl: '$baseImageUrl${item.posterPath}',
                   placeholder: (context, url) =>
                       const Center(child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
