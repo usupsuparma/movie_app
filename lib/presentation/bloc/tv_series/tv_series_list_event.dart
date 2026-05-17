@@ -7,5 +7,7 @@ abstract class TvSeriesListEvent extends Equatable {
 }
 
 class FetchOnTheAirTvSeries extends TvSeriesListEvent {}
+
 class FetchPopularTvSeriesList extends TvSeriesListEvent {}
+
 class FetchTopRatedTvSeriesList extends TvSeriesListEvent {}

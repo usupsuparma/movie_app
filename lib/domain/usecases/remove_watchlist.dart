@@ -12,4 +12,3 @@ class RemoveWatchlist {
     return repository.removeWatchlist(movie);
   }
 }
-

@@ -9,4 +9,3 @@ class GetWatchListStatus {
     return repository.isAddedToWatchlist(id);
   }
 }
-

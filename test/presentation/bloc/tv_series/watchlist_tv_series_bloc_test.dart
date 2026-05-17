@@ -26,8 +26,9 @@ void main() {
     blocTest<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetWatchlistTvSeries.execute())
-            .thenAnswer((_) async => Right(tTvSeriesList));
+        when(
+          () => mockGetWatchlistTvSeries.execute(),
+        ).thenAnswer((_) async => Right(tTvSeriesList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchWatchlistTvSeries()),
@@ -40,8 +41,9 @@ void main() {
     blocTest<WatchlistTvSeriesBloc, WatchlistTvSeriesState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetWatchlistTvSeries.execute())
-            .thenAnswer((_) async => Left(DatabaseFailure('Database Failure')));
+        when(
+          () => mockGetWatchlistTvSeries.execute(),
+        ).thenAnswer((_) async => Left(DatabaseFailure('Database Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchWatchlistTvSeries()),

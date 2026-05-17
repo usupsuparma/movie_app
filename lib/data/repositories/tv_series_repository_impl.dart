@@ -68,7 +68,9 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   }
 
   @override
-  Future<Either<Failure, List<TvSeries>>> getTvSeriesRecommendations(int id) async {
+  Future<Either<Failure, List<TvSeries>>> getTvSeriesRecommendations(
+    int id,
+  ) async {
     try {
       final result = await remoteDataSource.getTvSeriesRecommendations(id);
       return Right(result.map((model) => model.toEntity()).toList());
@@ -92,10 +94,13 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   }
 
   @override
-  Future<Either<Failure, String>> saveWatchlistTvSeries(TvSeriesDetail tvSeries) async {
+  Future<Either<Failure, String>> saveWatchlistTvSeries(
+    TvSeriesDetail tvSeries,
+  ) async {
     try {
-      final result =
-          await localDataSource.insertWatchlist(TvSeriesTable.fromEntity(tvSeries));
+      final result = await localDataSource.insertWatchlist(
+        TvSeriesTable.fromEntity(tvSeries),
+      );
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
@@ -103,10 +108,13 @@ class TvSeriesRepositoryImpl implements TvSeriesRepository {
   }
 
   @override
-  Future<Either<Failure, String>> removeWatchlistTvSeries(TvSeriesDetail tvSeries) async {
+  Future<Either<Failure, String>> removeWatchlistTvSeries(
+    TvSeriesDetail tvSeries,
+  ) async {
     try {
-      final result =
-          await localDataSource.removeWatchlist(TvSeriesTable.fromEntity(tvSeries));
+      final result = await localDataSource.removeWatchlist(
+        TvSeriesTable.fromEntity(tvSeries),
+      );
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));

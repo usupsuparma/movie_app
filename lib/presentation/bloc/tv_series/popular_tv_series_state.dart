@@ -8,6 +8,7 @@ abstract class PopularTvSeriesState extends Equatable {
 }
 
 class PopularTvSeriesEmpty extends PopularTvSeriesState {}
+
 class PopularTvSeriesLoading extends PopularTvSeriesState {}
 
 class PopularTvSeriesError extends PopularTvSeriesState {

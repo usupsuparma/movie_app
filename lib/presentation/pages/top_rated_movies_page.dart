@@ -24,9 +24,7 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Top Rated Movies'),
-      ),
+      appBar: AppBar(title: Text('Top Rated Movies')),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<TopRatedMoviesBloc, TopRatedMoviesState>(
@@ -55,4 +53,3 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
     );
   }
 }
-

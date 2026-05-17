@@ -26,8 +26,9 @@ void main() {
     blocTest<PopularTvSeriesBloc, PopularTvSeriesState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetPopularTvSeries.execute())
-            .thenAnswer((_) async => Right(tTvSeriesList));
+        when(
+          () => mockGetPopularTvSeries.execute(),
+        ).thenAnswer((_) async => Right(tTvSeriesList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchPopularTvSeries()),
@@ -40,8 +41,9 @@ void main() {
     blocTest<PopularTvSeriesBloc, PopularTvSeriesState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetPopularTvSeries.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetPopularTvSeries.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchPopularTvSeries()),

@@ -47,5 +47,10 @@ class MovieDetailLoaded extends MovieDetailState {
   }
 
   @override
-  List<Object?> get props => [movie, recommendations, isAddedToWatchlist, watchlistMessage];
+  List<Object?> get props => [
+    movie,
+    recommendations,
+    isAddedToWatchlist,
+    watchlistMessage,
+  ];
 }

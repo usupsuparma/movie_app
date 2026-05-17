@@ -26,8 +26,9 @@ void main() {
     blocTest<WatchlistMovieBloc, WatchlistMovieState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetWatchlistMovies.execute())
-            .thenAnswer((_) async => Right(testMovieList));
+        when(
+          () => mockGetWatchlistMovies.execute(),
+        ).thenAnswer((_) async => Right(testMovieList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchWatchlistMovies()),
@@ -40,8 +41,9 @@ void main() {
     blocTest<WatchlistMovieBloc, WatchlistMovieState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetWatchlistMovies.execute())
-            .thenAnswer((_) async => Left(DatabaseFailure('Database Failure')));
+        when(
+          () => mockGetWatchlistMovies.execute(),
+        ).thenAnswer((_) async => Left(DatabaseFailure('Database Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchWatchlistMovies()),

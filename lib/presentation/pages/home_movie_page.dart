@@ -24,8 +24,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-        () {
+    Future.microtask(() {
       final bloc = context.read<MovieListBloc>();
       bloc.add(FetchNowPlayingMovies());
       bloc.add(FetchPopularMovies());
@@ -46,9 +45,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               ),
               accountName: Text('movie_app'),
               accountEmail: Text('movie_app@dicoding.com'),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade900,
-              ),
+              decoration: BoxDecoration(color: Colors.grey.shade900),
             ),
             ListTile(
               leading: Icon(Icons.movie),
@@ -61,7 +58,10 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               leading: Icon(Icons.live_tv),
               title: Text('TV Series'),
               onTap: () {
-                Navigator.pushReplacementNamed(context, HomeTvSeriesPage.routeName);
+                Navigator.pushReplacementNamed(
+                  context,
+                  HomeTvSeriesPage.routeName,
+                );
               },
             ),
             ListTile(
@@ -96,7 +96,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
               Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
             },
             icon: Icon(Icons.search),
-          )
+          ),
         ],
       ),
       body: Padding(
@@ -105,10 +105,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Now Playing',
-                style: kHeading6,
-              ),
+              Text('Now Playing', style: kHeading6),
               BlocBuilder<MovieListBloc, MovieListState>(
                 builder: (context, state) {
                   if (state is MovieListLoading) {
@@ -169,10 +166,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: kHeading6,
-        ),
+        Text(title, style: kHeading6),
         InkWell(
           onTap: onTap,
           child: Padding(
@@ -214,9 +208,8 @@ class MovieList extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
                   imageUrl: '$BASE_IMAGE_URL${movie.posterPath}',
-                  placeholder: (context, url) => Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                  placeholder: (context, url) =>
+                      Center(child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -228,4 +221,3 @@ class MovieList extends StatelessWidget {
     );
   }
 }
-

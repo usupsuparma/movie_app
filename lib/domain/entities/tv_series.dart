@@ -20,13 +20,13 @@ class TvSeries extends Equatable {
     required this.name,
     required this.overview,
     required this.posterPath,
-  })  : backdropPath = null,
-        genreIds = null,
-        originalName = null,
-        firstAirDate = null,
-        popularity = null,
-        voteAverage = null,
-        voteCount = null;
+  }) : backdropPath = null,
+       genreIds = null,
+       originalName = null,
+       firstAirDate = null,
+       popularity = null,
+       voteAverage = null,
+       voteCount = null;
 
   final int id;
   final String? name;
@@ -42,16 +42,16 @@ class TvSeries extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        overview,
-        posterPath,
-        backdropPath,
-        genreIds,
-        originalName,
-        firstAirDate,
-        popularity,
-        voteAverage,
-        voteCount,
-      ];
+    id,
+    name,
+    overview,
+    posterPath,
+    backdropPath,
+    genreIds,
+    originalName,
+    firstAirDate,
+    popularity,
+    voteAverage,
+    voteCount,
+  ];
 }

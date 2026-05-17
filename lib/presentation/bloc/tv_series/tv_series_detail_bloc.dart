@@ -9,7 +9,8 @@ import 'package:g/domain/usecases/save_watchlist_tv_series.dart';
 import 'tv_series_detail_event.dart';
 import 'tv_series_detail_state.dart';
 
-class TvSeriesDetailBloc extends Bloc<TvSeriesDetailEvent, TvSeriesDetailState> {
+class TvSeriesDetailBloc
+    extends Bloc<TvSeriesDetailEvent, TvSeriesDetailState> {
   static const watchlistAddSuccessMessage = 'Added to Watchlist';
   static const watchlistRemoveSuccessMessage = 'Removed from Watchlist';
 
@@ -29,23 +30,31 @@ class TvSeriesDetailBloc extends Bloc<TvSeriesDetailEvent, TvSeriesDetailState> 
     on<FetchTvSeriesDetail>((event, emit) async {
       emit(TvSeriesDetailLoading());
       final detailResult = await getTvSeriesDetail.execute(event.id);
-      final recommendationResult = await getTvSeriesRecommendations.execute(event.id);
-      final watchlistStatus = await getWatchlistStatusTvSeries.execute(event.id);
+      final recommendationResult = await getTvSeriesRecommendations.execute(
+        event.id,
+      );
+      final watchlistStatus = await getWatchlistStatusTvSeries.execute(
+        event.id,
+      );
 
       detailResult.fold(
         (failure) => emit(TvSeriesDetailError(failure.message)),
         (tvSeries) {
           recommendationResult.fold(
-            (failure) => emit(TvSeriesDetailLoaded(
-              tvSeries: tvSeries,
-              recommendations: [],
-              isAddedToWatchlist: watchlistStatus,
-            )),
-            (recs) => emit(TvSeriesDetailLoaded(
-              tvSeries: tvSeries,
-              recommendations: recs,
-              isAddedToWatchlist: watchlistStatus,
-            )),
+            (failure) => emit(
+              TvSeriesDetailLoaded(
+                tvSeries: tvSeries,
+                recommendations: [],
+                isAddedToWatchlist: watchlistStatus,
+              ),
+            ),
+            (recs) => emit(
+              TvSeriesDetailLoaded(
+                tvSeries: tvSeries,
+                recommendations: recs,
+                isAddedToWatchlist: watchlistStatus,
+              ),
+            ),
           );
         },
       );
@@ -58,14 +67,18 @@ class TvSeriesDetailBloc extends Bloc<TvSeriesDetailEvent, TvSeriesDetailState> 
       if (state is TvSeriesDetailLoaded) {
         final current = state as TvSeriesDetailLoaded;
         result.fold(
-          (failure) => emit(current.copyWith(
-            isAddedToWatchlist: isAdded,
-            watchlistMessage: failure.message,
-          )),
-          (msg) => emit(current.copyWith(
-            isAddedToWatchlist: isAdded,
-            watchlistMessage: msg,
-          )),
+          (failure) => emit(
+            current.copyWith(
+              isAddedToWatchlist: isAdded,
+              watchlistMessage: failure.message,
+            ),
+          ),
+          (msg) => emit(
+            current.copyWith(
+              isAddedToWatchlist: isAdded,
+              watchlistMessage: msg,
+            ),
+          ),
         );
       }
     });
@@ -77,14 +90,18 @@ class TvSeriesDetailBloc extends Bloc<TvSeriesDetailEvent, TvSeriesDetailState> 
       if (state is TvSeriesDetailLoaded) {
         final current = state as TvSeriesDetailLoaded;
         result.fold(
-          (failure) => emit(current.copyWith(
-            isAddedToWatchlist: isAdded,
-            watchlistMessage: failure.message,
-          )),
-          (msg) => emit(current.copyWith(
-            isAddedToWatchlist: isAdded,
-            watchlistMessage: msg,
-          )),
+          (failure) => emit(
+            current.copyWith(
+              isAddedToWatchlist: isAdded,
+              watchlistMessage: failure.message,
+            ),
+          ),
+          (msg) => emit(
+            current.copyWith(
+              isAddedToWatchlist: isAdded,
+              watchlistMessage: msg,
+            ),
+          ),
         );
       }
     });

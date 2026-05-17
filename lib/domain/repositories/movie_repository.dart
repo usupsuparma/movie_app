@@ -15,4 +15,3 @@ abstract class MovieRepository {
   Future<bool> isAddedToWatchlist(int id);
   Future<Either<Failure, List<Movie>>> getWatchlistMovies();
 }
-

@@ -13,7 +13,9 @@ import 'package:mocktail/mocktail.dart';
 import '../../../dummy_data/dummy_objects.dart';
 
 class _MockGetNowPlayingMovies extends Mock implements GetNowPlayingMovies {}
+
 class _MockGetPopularMovies extends Mock implements GetPopularMovies {}
+
 class _MockGetTopRatedMovies extends Mock implements GetTopRatedMovies {}
 
 void main() {
@@ -28,31 +30,30 @@ void main() {
   });
 
   MovieListBloc makeBloc() => MovieListBloc(
-        getNowPlayingMovies: mockGetNowPlayingMovies,
-        getPopularMovies: mockGetPopularMovies,
-        getTopRatedMovies: mockGetTopRatedMovies,
-      );
+    getNowPlayingMovies: mockGetNowPlayingMovies,
+    getPopularMovies: mockGetPopularMovies,
+    getTopRatedMovies: mockGetTopRatedMovies,
+  );
 
   group('FetchNowPlayingMovies', () {
     blocTest<MovieListBloc, MovieListState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetNowPlayingMovies.execute())
-            .thenAnswer((_) async => Right(testMovieList));
+        when(
+          () => mockGetNowPlayingMovies.execute(),
+        ).thenAnswer((_) async => Right(testMovieList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchNowPlayingMovies()),
-      expect: () => [
-        MovieListLoading(),
-        MovieListLoaded(testMovieList),
-      ],
+      expect: () => [MovieListLoading(), MovieListLoaded(testMovieList)],
     );
 
     blocTest<MovieListBloc, MovieListState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetNowPlayingMovies.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetNowPlayingMovies.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchNowPlayingMovies()),
@@ -67,22 +68,21 @@ void main() {
     blocTest<MovieListBloc, MovieListState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetPopularMovies.execute())
-            .thenAnswer((_) async => Right(testMovieList));
+        when(
+          () => mockGetPopularMovies.execute(),
+        ).thenAnswer((_) async => Right(testMovieList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchPopularMovies()),
-      expect: () => [
-        MovieListLoading(),
-        MovieListLoaded(testMovieList),
-      ],
+      expect: () => [MovieListLoading(), MovieListLoaded(testMovieList)],
     );
 
     blocTest<MovieListBloc, MovieListState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetPopularMovies.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetPopularMovies.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchPopularMovies()),
@@ -97,22 +97,21 @@ void main() {
     blocTest<MovieListBloc, MovieListState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetTopRatedMovies.execute())
-            .thenAnswer((_) async => Right(testMovieList));
+        when(
+          () => mockGetTopRatedMovies.execute(),
+        ).thenAnswer((_) async => Right(testMovieList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchTopRatedMovies()),
-      expect: () => [
-        MovieListLoading(),
-        MovieListLoaded(testMovieList),
-      ],
+      expect: () => [MovieListLoading(), MovieListLoaded(testMovieList)],
     );
 
     blocTest<MovieListBloc, MovieListState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetTopRatedMovies.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetTopRatedMovies.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchTopRatedMovies()),

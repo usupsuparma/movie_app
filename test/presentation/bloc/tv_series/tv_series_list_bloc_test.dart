@@ -13,7 +13,9 @@ import 'package:mocktail/mocktail.dart';
 import '../../../dummy_data/dummy_objects.dart';
 
 class _MockGetOnTheAirTvSeries extends Mock implements GetOnTheAirTvSeries {}
+
 class _MockGetPopularTvSeries extends Mock implements GetPopularTvSeries {}
+
 class _MockGetTopRatedTvSeries extends Mock implements GetTopRatedTvSeries {}
 
 void main() {
@@ -28,31 +30,30 @@ void main() {
   });
 
   TvSeriesListBloc makeBloc() => TvSeriesListBloc(
-        getOnTheAirTvSeries: mockGetOnTheAirTvSeries,
-        getPopularTvSeries: mockGetPopularTvSeries,
-        getTopRatedTvSeries: mockGetTopRatedTvSeries,
-      );
+    getOnTheAirTvSeries: mockGetOnTheAirTvSeries,
+    getPopularTvSeries: mockGetPopularTvSeries,
+    getTopRatedTvSeries: mockGetTopRatedTvSeries,
+  );
 
   group('FetchOnTheAirTvSeries', () {
     blocTest<TvSeriesListBloc, TvSeriesListState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetOnTheAirTvSeries.execute())
-            .thenAnswer((_) async => Right(tTvSeriesList));
+        when(
+          () => mockGetOnTheAirTvSeries.execute(),
+        ).thenAnswer((_) async => Right(tTvSeriesList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchOnTheAirTvSeries()),
-      expect: () => [
-        TvSeriesListLoading(),
-        TvSeriesListLoaded(tTvSeriesList),
-      ],
+      expect: () => [TvSeriesListLoading(), TvSeriesListLoaded(tTvSeriesList)],
     );
 
     blocTest<TvSeriesListBloc, TvSeriesListState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetOnTheAirTvSeries.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetOnTheAirTvSeries.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchOnTheAirTvSeries()),
@@ -67,22 +68,21 @@ void main() {
     blocTest<TvSeriesListBloc, TvSeriesListState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetPopularTvSeries.execute())
-            .thenAnswer((_) async => Right(tTvSeriesList));
+        when(
+          () => mockGetPopularTvSeries.execute(),
+        ).thenAnswer((_) async => Right(tTvSeriesList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchPopularTvSeriesList()),
-      expect: () => [
-        TvSeriesListLoading(),
-        TvSeriesListLoaded(tTvSeriesList),
-      ],
+      expect: () => [TvSeriesListLoading(), TvSeriesListLoaded(tTvSeriesList)],
     );
 
     blocTest<TvSeriesListBloc, TvSeriesListState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetPopularTvSeries.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetPopularTvSeries.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchPopularTvSeriesList()),
@@ -97,22 +97,21 @@ void main() {
     blocTest<TvSeriesListBloc, TvSeriesListState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetTopRatedTvSeries.execute())
-            .thenAnswer((_) async => Right(tTvSeriesList));
+        when(
+          () => mockGetTopRatedTvSeries.execute(),
+        ).thenAnswer((_) async => Right(tTvSeriesList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchTopRatedTvSeriesList()),
-      expect: () => [
-        TvSeriesListLoading(),
-        TvSeriesListLoaded(tTvSeriesList),
-      ],
+      expect: () => [TvSeriesListLoading(), TvSeriesListLoaded(tTvSeriesList)],
     );
 
     blocTest<TvSeriesListBloc, TvSeriesListState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetTopRatedTvSeries.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetTopRatedTvSeries.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchTopRatedTvSeriesList()),

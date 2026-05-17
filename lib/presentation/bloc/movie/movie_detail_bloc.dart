@@ -29,26 +29,31 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
     on<FetchMovieDetail>((event, emit) async {
       emit(MovieDetailLoading());
       final detailResult = await getMovieDetail.execute(event.id);
-      final recommendationResult = await getMovieRecommendations.execute(event.id);
+      final recommendationResult = await getMovieRecommendations.execute(
+        event.id,
+      );
       final watchlistStatus = await getWatchListStatus.execute(event.id);
 
-      detailResult.fold(
-        (failure) => emit(MovieDetailError(failure.message)),
-        (movie) {
-          recommendationResult.fold(
-            (failure) => emit(MovieDetailLoaded(
+      detailResult.fold((failure) => emit(MovieDetailError(failure.message)), (
+        movie,
+      ) {
+        recommendationResult.fold(
+          (failure) => emit(
+            MovieDetailLoaded(
               movie: movie,
               recommendations: [],
               isAddedToWatchlist: watchlistStatus,
-            )),
-            (recs) => emit(MovieDetailLoaded(
+            ),
+          ),
+          (recs) => emit(
+            MovieDetailLoaded(
               movie: movie,
               recommendations: recs,
               isAddedToWatchlist: watchlistStatus,
-            )),
-          );
-        },
-      );
+            ),
+          ),
+        );
+      });
     });
 
     on<AddMovieWatchlist>((event, emit) async {
@@ -58,14 +63,18 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       if (state is MovieDetailLoaded) {
         final current = state as MovieDetailLoaded;
         result.fold(
-          (failure) => emit(current.copyWith(
-            isAddedToWatchlist: isAdded,
-            watchlistMessage: failure.message,
-          )),
-          (msg) => emit(current.copyWith(
-            isAddedToWatchlist: isAdded,
-            watchlistMessage: msg,
-          )),
+          (failure) => emit(
+            current.copyWith(
+              isAddedToWatchlist: isAdded,
+              watchlistMessage: failure.message,
+            ),
+          ),
+          (msg) => emit(
+            current.copyWith(
+              isAddedToWatchlist: isAdded,
+              watchlistMessage: msg,
+            ),
+          ),
         );
       }
     });
@@ -77,14 +86,18 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
       if (state is MovieDetailLoaded) {
         final current = state as MovieDetailLoaded;
         result.fold(
-          (failure) => emit(current.copyWith(
-            isAddedToWatchlist: isAdded,
-            watchlistMessage: failure.message,
-          )),
-          (msg) => emit(current.copyWith(
-            isAddedToWatchlist: isAdded,
-            watchlistMessage: msg,
-          )),
+          (failure) => emit(
+            current.copyWith(
+              isAddedToWatchlist: isAdded,
+              watchlistMessage: failure.message,
+            ),
+          ),
+          (msg) => emit(
+            current.copyWith(
+              isAddedToWatchlist: isAdded,
+              watchlistMessage: msg,
+            ),
+          ),
         );
       }
     });

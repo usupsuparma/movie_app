@@ -8,6 +8,7 @@ abstract class TvSeriesSearchState extends Equatable {
 }
 
 class TvSeriesSearchEmpty extends TvSeriesSearchState {}
+
 class TvSeriesSearchLoading extends TvSeriesSearchState {}
 
 class TvSeriesSearchError extends TvSeriesSearchState {

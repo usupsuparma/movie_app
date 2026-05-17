@@ -9,7 +9,9 @@ abstract class PopularMoviesState extends Equatable {
 }
 
 class PopularMoviesEmpty extends PopularMoviesState {}
+
 class PopularMoviesLoading extends PopularMoviesState {}
+
 class PopularMoviesError extends PopularMoviesState {
   final String message;
   const PopularMoviesError(this.message);
@@ -17,6 +19,7 @@ class PopularMoviesError extends PopularMoviesState {
   @override
   List<Object?> get props => [message];
 }
+
 class PopularMoviesLoaded extends PopularMoviesState {
   final List<Movie> movies;
   const PopularMoviesLoaded(this.movies);

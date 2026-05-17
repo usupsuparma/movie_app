@@ -12,4 +12,3 @@ class SearchMovies {
     return repository.searchMovies(query);
   }
 }
-

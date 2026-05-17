@@ -1,4 +1,4 @@
-﻿import 'dart:async';
+import 'dart:async';
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:g/domain/entities/movie.dart';
@@ -122,8 +122,8 @@ void main() {
   });
 
   testWidgets(
-      'Watchlist button should display add icon when movie not added to watchlist',
-      (WidgetTester tester) async {
+    'Watchlist button should display add icon when movie not added to watchlist',
+    (WidgetTester tester) async {
       await tester.pumpWidget(
         makeTestableWidget(
           MovieDetailPage(id: 1),
@@ -135,12 +135,13 @@ void main() {
         ),
       );
 
-    expect(find.byIcon(Icons.add), findsOneWidget);
-  });
+      expect(find.byIcon(Icons.add), findsOneWidget);
+    },
+  );
 
   testWidgets(
     'Watchlist button should display check icon when movie is added to watchlist',
-      (WidgetTester tester) async {
+    (WidgetTester tester) async {
       await tester.pumpWidget(
         makeTestableWidget(
           MovieDetailPage(id: 1),
@@ -153,11 +154,12 @@ void main() {
       );
 
       expect(find.byIcon(Icons.check), findsOneWidget);
-  });
+    },
+  );
 
   testWidgets(
-      'Watchlist button should display Snackbar when added to watchlist',
-      (WidgetTester tester) async {
+    'Watchlist button should display Snackbar when added to watchlist',
+    (WidgetTester tester) async {
       final initialState = MovieDetailLoaded(
         movie: testMovieDetail,
         recommendations: <Movie>[],
@@ -184,23 +186,24 @@ void main() {
         ),
       );
 
-    expect(find.byIcon(Icons.add), findsOneWidget);
+      expect(find.byIcon(Icons.add), findsOneWidget);
 
       await tester.tap(find.byType(FilledButton));
-    await tester.pump();
+      await tester.pump();
 
-    expect(find.byType(SnackBar), findsOneWidget);
+      expect(find.byType(SnackBar), findsOneWidget);
       expect(
         find.text(MovieDetailBloc.watchlistAddSuccessMessage),
         findsOneWidget,
       );
 
       await controller.close();
-  });
+    },
+  );
 
   testWidgets(
-      'Watchlist button should display AlertDialog when add to watchlist failed',
-      (WidgetTester tester) async {
+    'Watchlist button should display AlertDialog when add to watchlist failed',
+    (WidgetTester tester) async {
       final initialState = MovieDetailLoaded(
         movie: testMovieDetail,
         recommendations: <Movie>[],
@@ -227,14 +230,15 @@ void main() {
         ),
       );
 
-    expect(find.byIcon(Icons.add), findsOneWidget);
+      expect(find.byIcon(Icons.add), findsOneWidget);
 
       await tester.tap(find.byType(FilledButton));
-    await tester.pump();
+      await tester.pump();
 
-    expect(find.byType(AlertDialog), findsOneWidget);
-    expect(find.text('Failed'), findsOneWidget);
+      expect(find.byType(AlertDialog), findsOneWidget);
+      expect(find.text('Failed'), findsOneWidget);
 
       await controller.close();
-  });
+    },
+  );
 }

@@ -12,9 +12,9 @@ class FakeTvSeriesRepository implements TvSeriesRepository {
   Future<Either<Failure, List<TvSeries>>> Function()? recommendationsHandler;
   Future<Either<Failure, List<TvSeries>>> Function(String query)? searchHandler;
   Future<Either<Failure, String>> Function(TvSeriesDetail tvSeries)?
-      saveWatchlistHandler;
+  saveWatchlistHandler;
   Future<Either<Failure, String>> Function(TvSeriesDetail tvSeries)?
-      removeWatchlistHandler;
+  removeWatchlistHandler;
   Future<bool> Function(int id)? watchlistStatusHandler;
   Future<Either<Failure, List<TvSeries>>> Function()? watchlistHandler;
 

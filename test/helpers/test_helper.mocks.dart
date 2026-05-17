@@ -13,10 +13,8 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i14;
 import 'package:g/common/failure.dart' as _i7;
 import 'package:g/data/datasources/db/database_helper.dart' as _i15;
-import 'package:g/data/datasources/movie_local_data_source.dart'
-    as _i12;
-import 'package:g/data/datasources/movie_remote_data_source.dart'
-    as _i10;
+import 'package:g/data/datasources/movie_local_data_source.dart' as _i12;
+import 'package:g/data/datasources/movie_remote_data_source.dart' as _i10;
 import 'package:g/data/models/movie_detail_model.dart' as _i3;
 import 'package:g/data/models/movie_model.dart' as _i11;
 import 'package:g/data/models/movie_table.dart' as _i13;

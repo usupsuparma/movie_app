@@ -9,6 +9,7 @@ abstract class TvSeriesDetailState extends Equatable {
 }
 
 class TvSeriesDetailEmpty extends TvSeriesDetailState {}
+
 class TvSeriesDetailLoading extends TvSeriesDetailState {}
 
 class TvSeriesDetailError extends TvSeriesDetailState {
@@ -46,5 +47,10 @@ class TvSeriesDetailLoaded extends TvSeriesDetailState {
   }
 
   @override
-  List<Object?> get props => [tvSeries, recommendations, isAddedToWatchlist, watchlistMessage];
+  List<Object?> get props => [
+    tvSeries,
+    recommendations,
+    isAddedToWatchlist,
+    watchlistMessage,
+  ];
 }

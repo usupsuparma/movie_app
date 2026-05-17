@@ -19,8 +19,7 @@ void main() {
     mockSearchMovies = _MockSearchMovies();
   });
 
-  MovieSearchBloc makeBloc() =>
-      MovieSearchBloc(searchMovies: mockSearchMovies);
+  MovieSearchBloc makeBloc() => MovieSearchBloc(searchMovies: mockSearchMovies);
 
   group('SearchMoviesEvent', () {
     const tQuery = 'Spider';
@@ -28,22 +27,21 @@ void main() {
     blocTest<MovieSearchBloc, MovieSearchState>(
       'emits [Loading, Loaded] when search succeeds',
       build: () {
-        when(() => mockSearchMovies.execute(tQuery))
-            .thenAnswer((_) async => Right(testMovieList));
+        when(
+          () => mockSearchMovies.execute(tQuery),
+        ).thenAnswer((_) async => Right(testMovieList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(const SearchMoviesEvent(tQuery)),
-      expect: () => [
-        MovieSearchLoading(),
-        MovieSearchLoaded(testMovieList),
-      ],
+      expect: () => [MovieSearchLoading(), MovieSearchLoaded(testMovieList)],
     );
 
     blocTest<MovieSearchBloc, MovieSearchState>(
       'emits [Loading, Error] when search fails',
       build: () {
-        when(() => mockSearchMovies.execute(tQuery))
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockSearchMovies.execute(tQuery),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(const SearchMoviesEvent(tQuery)),

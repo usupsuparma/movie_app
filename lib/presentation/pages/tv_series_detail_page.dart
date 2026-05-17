@@ -107,9 +107,8 @@ class TvSeriesDetailContent extends StatelessWidget {
         CachedNetworkImage(
           imageUrl: '$BASE_IMAGE_URL${tvSeries.posterPath}',
           width: screenWidth,
-          placeholder: (context, url) => const Center(
-            child: CircularProgressIndicator(),
-          ),
+          placeholder: (context, url) =>
+              const Center(child: CircularProgressIndicator()),
           errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
         Container(
@@ -202,19 +201,19 @@ class TvSeriesDetailContent extends StatelessWidget {
                                             child: ClipRRect(
                                               borderRadius:
                                                   const BorderRadius.all(
-                                                Radius.circular(8),
-                                              ),
+                                                    Radius.circular(8),
+                                                  ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
                                                     '$BASE_IMAGE_URL${item.posterPath}',
                                                 placeholder: (context, url) =>
                                                     const Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                ),
-                                                errorWidget: (context, url,
-                                                        error) =>
-                                                    const Icon(Icons.error),
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    ),
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                        const Icon(Icons.error),
                                               ),
                                             ),
                                           ),
@@ -281,7 +280,10 @@ class TvSeriesDetailContent extends StatelessWidget {
     }
 
     return seasons
-        .map((season) => 'Season ${season.seasonNumber}: ${season.episodeCount} episodes')
+        .map(
+          (season) =>
+              'Season ${season.seasonNumber}: ${season.episodeCount} episodes',
+        )
         .join('\n');
   }
 }

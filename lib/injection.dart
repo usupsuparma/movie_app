@@ -1,4 +1,3 @@
-
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:g/common/ssl_pinning.dart';
@@ -43,6 +42,7 @@ import 'package:g/presentation/bloc/tv_series/tv_series_search_bloc.dart';
 import 'package:g/presentation/bloc/tv_series/popular_tv_series_bloc.dart';
 import 'package:g/presentation/bloc/tv_series/top_rated_tv_series_bloc.dart';
 import 'package:g/presentation/bloc/tv_series/watchlist_tv_series_bloc.dart';
+
 final locator = GetIt.instance;
 
 Future<void> init() async {
@@ -87,13 +87,13 @@ Future<void> init() async {
       removeWatchlistTvSeries: locator(),
     ),
   );
-  locator.registerFactory(
-      () => TvSeriesSearchBloc(searchTvSeries: locator()));
+  locator.registerFactory(() => TvSeriesSearchBloc(searchTvSeries: locator()));
   locator.registerFactory(
     () => PopularTvSeriesBloc(getPopularTvSeries: locator()),
   );
   locator.registerFactory(
-      () => TopRatedTvSeriesBloc(getTopRatedTvSeries: locator()));
+    () => TopRatedTvSeriesBloc(getTopRatedTvSeries: locator()),
+  );
   locator.registerFactory(
     () => WatchlistTvSeriesBloc(getWatchlistTvSeries: locator()),
   );
@@ -136,13 +136,17 @@ Future<void> init() async {
 
   // data sources
   locator.registerLazySingleton<MovieRemoteDataSource>(
-      () => MovieRemoteDataSourceImpl(client: locator()));
+    () => MovieRemoteDataSourceImpl(client: locator()),
+  );
   locator.registerLazySingleton<MovieLocalDataSource>(
-      () => MovieLocalDataSourceImpl(databaseHelper: locator()));
-    locator.registerLazySingleton<TvSeriesRemoteDataSource>(
-      () => TvSeriesRemoteDataSourceImpl(client: locator()));
-    locator.registerLazySingleton<TvSeriesLocalDataSource>(
-      () => TvSeriesLocalDataSourceImpl(databaseHelper: locator()));
+    () => MovieLocalDataSourceImpl(databaseHelper: locator()),
+  );
+  locator.registerLazySingleton<TvSeriesRemoteDataSource>(
+    () => TvSeriesRemoteDataSourceImpl(client: locator()),
+  );
+  locator.registerLazySingleton<TvSeriesLocalDataSource>(
+    () => TvSeriesLocalDataSourceImpl(databaseHelper: locator()),
+  );
 
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
@@ -151,4 +155,3 @@ Future<void> init() async {
   final sslClient = await createSslPinnedClient();
   locator.registerLazySingleton<http.Client>(() => sslClient);
 }
-

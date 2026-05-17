@@ -9,7 +9,9 @@ abstract class TopRatedMoviesState extends Equatable {
 }
 
 class TopRatedMoviesEmpty extends TopRatedMoviesState {}
+
 class TopRatedMoviesLoading extends TopRatedMoviesState {}
+
 class TopRatedMoviesError extends TopRatedMoviesState {
   final String message;
   const TopRatedMoviesError(this.message);
@@ -17,6 +19,7 @@ class TopRatedMoviesError extends TopRatedMoviesState {
   @override
   List<Object?> get props => [message];
 }
+
 class TopRatedMoviesLoaded extends TopRatedMoviesState {
   final List<Movie> movies;
   const TopRatedMoviesLoaded(this.movies);

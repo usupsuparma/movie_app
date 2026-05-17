@@ -12,4 +12,3 @@ class SaveWatchlist {
     return repository.saveWatchlist(movie);
   }
 }
-

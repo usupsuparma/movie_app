@@ -23,8 +23,9 @@ void main() {
     );
   }
 
-  testWidgets('Page should display center progress bar when loading',
-      (WidgetTester tester) async {
+  testWidgets('Page should display center progress bar when loading', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       makeTestableWidget(PopularMoviesPage(), PopularMoviesLoading()),
     );
@@ -33,8 +34,9 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 
-  testWidgets('Page should display ListView when data is loaded',
-      (WidgetTester tester) async {
+  testWidgets('Page should display ListView when data is loaded', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       makeTestableWidget(PopularMoviesPage(), PopularMoviesLoaded(<Movie>[])),
     );
@@ -42,8 +44,9 @@ void main() {
     expect(find.byType(ListView), findsOneWidget);
   });
 
-  testWidgets('Page should display text with message when Error',
-      (WidgetTester tester) async {
+  testWidgets('Page should display text with message when Error', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       makeTestableWidget(
         PopularMoviesPage(),

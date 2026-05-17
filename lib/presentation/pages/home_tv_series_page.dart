@@ -225,4 +225,3 @@ class TvSeriesList extends StatelessWidget {
     );
   }
 }
-

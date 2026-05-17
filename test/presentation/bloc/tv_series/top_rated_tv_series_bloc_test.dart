@@ -26,8 +26,9 @@ void main() {
     blocTest<TopRatedTvSeriesBloc, TopRatedTvSeriesState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetTopRatedTvSeries.execute())
-            .thenAnswer((_) async => Right(tTvSeriesList));
+        when(
+          () => mockGetTopRatedTvSeries.execute(),
+        ).thenAnswer((_) async => Right(tTvSeriesList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchTopRatedTvSeries()),
@@ -40,8 +41,9 @@ void main() {
     blocTest<TopRatedTvSeriesBloc, TopRatedTvSeriesState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetTopRatedTvSeries.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetTopRatedTvSeries.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchTopRatedTvSeries()),

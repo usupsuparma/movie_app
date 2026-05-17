@@ -50,7 +50,9 @@ class DatabaseHelper {
 
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
     if (oldVersion < 2) {
-      await db.execute('ALTER TABLE $_tblWatchlist RENAME TO ${_tblWatchlist}_old');
+      await db.execute(
+        'ALTER TABLE $_tblWatchlist RENAME TO ${_tblWatchlist}_old',
+      );
       await _onCreate(db, newVersion);
       await db.execute('''
         INSERT INTO $_tblWatchlist (id, title, overview, posterPath, mediaType)
@@ -79,7 +81,10 @@ class DatabaseHelper {
     );
   }
 
-  Future<Map<String, dynamic>?> getWatchlistById(int id, String mediaType) async {
+  Future<Map<String, dynamic>?> getWatchlistById(
+    int id,
+    String mediaType,
+  ) async {
     final db = await database;
     final results = await db!.query(
       _tblWatchlist,
@@ -94,7 +99,9 @@ class DatabaseHelper {
     }
   }
 
-  Future<List<Map<String, dynamic>>> getWatchlistByMediaType(String mediaType) async {
+  Future<List<Map<String, dynamic>>> getWatchlistByMediaType(
+    String mediaType,
+  ) async {
     final db = await database;
     final List<Map<String, dynamic>> results = await db!.query(
       _tblWatchlist,
@@ -105,4 +112,3 @@ class DatabaseHelper {
     return results;
   }
 }
-

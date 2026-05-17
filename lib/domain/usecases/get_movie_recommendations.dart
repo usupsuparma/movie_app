@@ -12,4 +12,3 @@ class GetMovieRecommendations {
     return repository.getMovieRecommendations(id);
   }
 }
-

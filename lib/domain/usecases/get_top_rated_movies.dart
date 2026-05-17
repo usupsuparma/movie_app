@@ -12,4 +12,3 @@ class GetTopRatedMovies {
     return repository.getTopRatedMovies();
   }
 }
-

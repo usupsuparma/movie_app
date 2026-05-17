@@ -39,7 +39,9 @@ class TvSeriesDetailResponse extends Equatable {
   factory TvSeriesDetailResponse.fromJson(Map<String, dynamic> json) =>
       TvSeriesDetailResponse(
         backdropPath: json['backdrop_path'],
-        episodeRunTime: List<int>.from((json['episode_run_time'] ?? []).map((x) => x)),
+        episodeRunTime: List<int>.from(
+          (json['episode_run_time'] ?? []).map((x) => x),
+        ),
         firstAirDate: json['first_air_date'] ?? '',
         genres: List<GenreModel>.from(
           (json['genres'] ?? []).map((x) => GenreModel.fromJson(x)),
@@ -59,37 +61,37 @@ class TvSeriesDetailResponse extends Equatable {
       );
 
   TvSeriesDetail toEntity() => TvSeriesDetail(
-        backdropPath: backdropPath,
-        episodeRunTime: episodeRunTime,
-        firstAirDate: firstAirDate,
-        genres: genres.map((genre) => genre.toEntity()).toList(),
-        id: id,
-        name: name,
-        numberOfEpisodes: numberOfEpisodes,
-        numberOfSeasons: numberOfSeasons,
-        originalName: originalName,
-        overview: overview,
-        posterPath: posterPath,
-        seasons: seasons.map((season) => season.toEntity()).toList(),
-        voteAverage: voteAverage,
-        voteCount: voteCount,
-      );
+    backdropPath: backdropPath,
+    episodeRunTime: episodeRunTime,
+    firstAirDate: firstAirDate,
+    genres: genres.map((genre) => genre.toEntity()).toList(),
+    id: id,
+    name: name,
+    numberOfEpisodes: numberOfEpisodes,
+    numberOfSeasons: numberOfSeasons,
+    originalName: originalName,
+    overview: overview,
+    posterPath: posterPath,
+    seasons: seasons.map((season) => season.toEntity()).toList(),
+    voteAverage: voteAverage,
+    voteCount: voteCount,
+  );
 
   @override
   List<Object?> get props => [
-        backdropPath,
-        episodeRunTime,
-        firstAirDate,
-        genres,
-        id,
-        name,
-        numberOfEpisodes,
-        numberOfSeasons,
-        originalName,
-        overview,
-        posterPath,
-        seasons,
-        voteAverage,
-        voteCount,
-      ];
+    backdropPath,
+    episodeRunTime,
+    firstAirDate,
+    genres,
+    id,
+    name,
+    numberOfEpisodes,
+    numberOfSeasons,
+    originalName,
+    overview,
+    posterPath,
+    seasons,
+    voteAverage,
+    voteCount,
+  ];
 }

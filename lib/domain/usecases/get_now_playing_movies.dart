@@ -12,4 +12,3 @@ class GetNowPlayingMovies {
     return repository.getNowPlayingMovies();
   }
 }
-

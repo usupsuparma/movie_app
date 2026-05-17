@@ -15,8 +15,8 @@ void main() {
   });
 
   test('should save TV series watchlist through the repository', () async {
-    repository.saveWatchlistHandler =
-        (_) async => const Right('Added to Watchlist');
+    repository.saveWatchlistHandler = (_) async =>
+        const Right('Added to Watchlist');
 
     final result = await usecase.execute(tTvSeriesDetail);
 

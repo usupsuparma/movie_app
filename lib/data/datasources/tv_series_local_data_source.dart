@@ -36,7 +36,10 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
 
   @override
   Future<TvSeriesTable?> getTvSeriesById(int id) async {
-    final result = await databaseHelper.getWatchlistById(id, TvSeriesTable.tvMediaType);
+    final result = await databaseHelper.getWatchlistById(
+      id,
+      TvSeriesTable.tvMediaType,
+    );
     if (result != null) {
       return TvSeriesTable.fromMap(result);
     }
@@ -45,8 +48,9 @@ class TvSeriesLocalDataSourceImpl implements TvSeriesLocalDataSource {
 
   @override
   Future<List<TvSeriesTable>> getWatchlistTvSeries() async {
-    final result =
-        await databaseHelper.getWatchlistByMediaType(TvSeriesTable.tvMediaType);
+    final result = await databaseHelper.getWatchlistByMediaType(
+      TvSeriesTable.tvMediaType,
+    );
     return result.map((data) => TvSeriesTable.fromMap(data)).toList();
   }
 }

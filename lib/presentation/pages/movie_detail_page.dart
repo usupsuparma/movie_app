@@ -100,9 +100,8 @@ class DetailContent extends StatelessWidget {
         CachedNetworkImage(
           imageUrl: 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
           width: screenWidth,
-          placeholder: (context, url) => Center(
-            child: CircularProgressIndicator(),
-          ),
+          placeholder: (context, url) =>
+              Center(child: CircularProgressIndicator()),
           errorWidget: (context, url, error) => Icon(Icons.error),
         ),
         Container(
@@ -114,11 +113,7 @@ class DetailContent extends StatelessWidget {
                   color: kRichBlack,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
                 ),
-                padding: const EdgeInsets.only(
-                  left: 16,
-                  top: 16,
-                  right: 16,
-                ),
+                padding: const EdgeInsets.only(left: 16, top: 16, right: 16),
                 child: Stack(
                   children: [
                     Container(
@@ -128,10 +123,7 @@ class DetailContent extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              movie.title,
-                              style: kHeading5,
-                            ),
+                            Text(movie.title, style: kHeading5),
                             FilledButton(
                               onPressed: () {
                                 final bloc = context.read<MovieDetailBloc>();
@@ -151,39 +143,25 @@ class DetailContent extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Text(
-                              _showGenres(movie.genres),
-                            ),
-                            Text(
-                              _showDuration(movie.runtime),
-                            ),
+                            Text(_showGenres(movie.genres)),
+                            Text(_showDuration(movie.runtime)),
                             Row(
                               children: [
                                 RatingBarIndicator(
                                   rating: movie.voteAverage / 2,
                                   itemCount: 5,
-                                  itemBuilder: (context, index) => Icon(
-                                    Icons.star,
-                                    color: kMikadoYellow,
-                                  ),
+                                  itemBuilder: (context, index) =>
+                                      Icon(Icons.star, color: kMikadoYellow),
                                   itemSize: 24,
                                 ),
-                                Text('${movie.voteAverage}')
+                                Text('${movie.voteAverage}'),
                               ],
                             ),
                             SizedBox(height: 16),
-                            Text(
-                              'Overview',
-                              style: kHeading6,
-                            ),
-                            Text(
-                              movie.overview,
-                            ),
+                            Text('Overview', style: kHeading6),
+                            Text(movie.overview),
                             SizedBox(height: 16),
-                            Text(
-                              'Recommendations',
-                              style: kHeading6,
-                            ),
+                            Text('Recommendations', style: kHeading6),
                             recommendations.isEmpty
                                 ? Container()
                                 : Container(
@@ -211,9 +189,9 @@ class DetailContent extends StatelessWidget {
                                                     'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                                                 placeholder: (context, url) =>
                                                     Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                ),
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    ),
                                                 errorWidget:
                                                     (context, url, error) =>
                                                         Icon(Icons.error),
@@ -258,7 +236,7 @@ class DetailContent extends StatelessWidget {
               },
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -287,4 +265,3 @@ class DetailContent extends StatelessWidget {
     }
   }
 }
-

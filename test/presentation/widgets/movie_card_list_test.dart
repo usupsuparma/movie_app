@@ -24,17 +24,13 @@ Widget _makeTestableWidget({
       if (settings.name == MovieDetailPage.ROUTE_NAME) {
         return MaterialPageRoute<void>(
           settings: settings,
-          builder: (_) => const Scaffold(
-            body: Text('movie detail page'),
-          ),
+          builder: (_) => const Scaffold(body: Text('movie detail page')),
         );
       }
 
       return MaterialPageRoute<void>(
         settings: settings,
-        builder: (_) => Scaffold(
-          body: Center(child: MovieCard(movie)),
-        ),
+        builder: (_) => Scaffold(body: Center(child: MovieCard(movie))),
       );
     },
   );
@@ -100,32 +96,34 @@ void main() {
     expect(find.text('movie detail page'), findsOneWidget);
   });
 
-  testWidgets('MovieCard should show fallback text when title or overview is null', (
-    WidgetTester tester,
-  ) async {
-    final movie = Movie(
-      adult: false,
-      backdropPath: '/backdrop.jpg',
-      genreIds: const [1, 2],
-      id: 1,
-      originalTitle: 'Original Title',
-      overview: 'Movie overview',
-      popularity: 10,
-      posterPath: '/poster.jpg',
-      releaseDate: '2020-01-01',
-      title: 'Movie Title',
-      video: false,
-      voteAverage: 8,
-      voteCount: 100,
-    )
-      ..title = null
-      ..overview = null;
-    final observer = TestNavigatorObserver();
+  testWidgets(
+    'MovieCard should show fallback text when title or overview is null',
+    (WidgetTester tester) async {
+      final movie =
+          Movie(
+              adult: false,
+              backdropPath: '/backdrop.jpg',
+              genreIds: const [1, 2],
+              id: 1,
+              originalTitle: 'Original Title',
+              overview: 'Movie overview',
+              popularity: 10,
+              posterPath: '/poster.jpg',
+              releaseDate: '2020-01-01',
+              title: 'Movie Title',
+              video: false,
+              voteAverage: 8,
+              voteCount: 100,
+            )
+            ..title = null
+            ..overview = null;
+      final observer = TestNavigatorObserver();
 
-    await tester.pumpWidget(
-      _makeTestableWidget(movie: movie, observer: observer),
-    );
+      await tester.pumpWidget(
+        _makeTestableWidget(movie: movie, observer: observer),
+      );
 
-    expect(find.text('-'), findsNWidgets(2));
-  });
+      expect(find.text('-'), findsNWidgets(2));
+    },
+  );
 }

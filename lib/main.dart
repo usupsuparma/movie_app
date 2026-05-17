@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -143,15 +142,21 @@ class MyApp extends StatelessWidget {
             case '/home':
               return MaterialPageRoute(builder: (_) => HomeMoviePage());
             case HomeTvSeriesPage.routeName:
-              return MaterialPageRoute(builder: (_) => const HomeTvSeriesPage());
+              return MaterialPageRoute(
+                builder: (_) => const HomeTvSeriesPage(),
+              );
             case PopularMoviesPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => PopularMoviesPage());
             case TopRatedMoviesPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => TopRatedMoviesPage());
             case PopularTvSeriesPage.routeName:
-              return CupertinoPageRoute(builder: (_) => const PopularTvSeriesPage());
+              return CupertinoPageRoute(
+                builder: (_) => const PopularTvSeriesPage(),
+              );
             case TopRatedTvSeriesPage.routeName:
-              return CupertinoPageRoute(builder: (_) => const TopRatedTvSeriesPage());
+              return CupertinoPageRoute(
+                builder: (_) => const TopRatedTvSeriesPage(),
+              );
             case MovieDetailPage.ROUTE_NAME:
               final id = settings.arguments as int;
               return MaterialPageRoute(
@@ -167,25 +172,28 @@ class MyApp extends StatelessWidget {
             case SearchPage.ROUTE_NAME:
               return CupertinoPageRoute(builder: (_) => SearchPage());
             case SearchTvSeriesPage.routeName:
-              return CupertinoPageRoute(builder: (_) => const SearchTvSeriesPage());
+              return CupertinoPageRoute(
+                builder: (_) => const SearchTvSeriesPage(),
+              );
             case WatchlistMoviesPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
             case WatchlistTvSeriesPage.routeName:
-              return MaterialPageRoute(builder: (_) => const WatchlistTvSeriesPage());
+              return MaterialPageRoute(
+                builder: (_) => const WatchlistTvSeriesPage(),
+              );
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
             default:
-              return MaterialPageRoute(builder: (_) {
-                return Scaffold(
-                  body: Center(
-                    child: Text('Page not found :('),
-                  ),
-                );
-              });
+              return MaterialPageRoute(
+                builder: (_) {
+                  return Scaffold(
+                    body: Center(child: Text('Page not found :(')),
+                  );
+                },
+              );
           }
         },
       ),
     );
   }
 }
-

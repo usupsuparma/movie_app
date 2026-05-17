@@ -76,7 +76,9 @@ void main() {
   });
 
   group('Constants Widget Tests', () {
-    testWidgets('kTextTheme should be used in theme', (WidgetTester tester) async {
+    testWidgets('kTextTheme should be used in theme', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: ThemeData(
@@ -85,12 +87,7 @@ void main() {
             drawerTheme: kDrawerTheme,
           ),
           home: Scaffold(
-            body: Center(
-              child: Text(
-                'Test',
-                style: kHeading5,
-              ),
-            ),
+            body: Center(child: Text('Test', style: kHeading5)),
           ),
         ),
       );
@@ -99,7 +96,9 @@ void main() {
       expect(find.byType(Text), findsOneWidget);
     });
 
-    testWidgets('kSubtitle and kBodyText should be accessible', (WidgetTester tester) async {
+    testWidgets('kSubtitle and kBodyText should be accessible', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -121,18 +120,16 @@ void main() {
       expect(find.text('Heading6'), findsOneWidget);
     });
 
-    testWidgets('kDrawerTheme should be used in theme', (WidgetTester tester) async {
+    testWidgets('kDrawerTheme should be used in theme', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           theme: ThemeData(
             drawerTheme: kDrawerTheme,
             colorScheme: kColorScheme,
           ),
-          home: const Scaffold(
-            body: Center(
-              child: Text('Theme Test'),
-            ),
-          ),
+          home: const Scaffold(body: Center(child: Text('Theme Test'))),
         ),
       );
 

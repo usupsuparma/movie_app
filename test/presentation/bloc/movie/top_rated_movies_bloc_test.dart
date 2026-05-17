@@ -26,8 +26,9 @@ void main() {
     blocTest<TopRatedMoviesBloc, TopRatedMoviesState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetTopRatedMovies.execute())
-            .thenAnswer((_) async => Right(testMovieList));
+        when(
+          () => mockGetTopRatedMovies.execute(),
+        ).thenAnswer((_) async => Right(testMovieList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchTopRatedMovies()),
@@ -40,8 +41,9 @@ void main() {
     blocTest<TopRatedMoviesBloc, TopRatedMoviesState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetTopRatedMovies.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetTopRatedMovies.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchTopRatedMovies()),

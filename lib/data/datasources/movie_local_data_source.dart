@@ -1,5 +1,3 @@
-
-
 import 'package:g/common/exception.dart';
 import 'package:g/data/datasources/db/database_helper.dart';
 import 'package:g/data/models/movie_table.dart';
@@ -38,7 +36,10 @@ class MovieLocalDataSourceImpl implements MovieLocalDataSource {
 
   @override
   Future<MovieTable?> getMovieById(int id) async {
-    final result = await databaseHelper.getWatchlistById(id, MovieTable.movieMediaType);
+    final result = await databaseHelper.getWatchlistById(
+      id,
+      MovieTable.movieMediaType,
+    );
     if (result != null) {
       return MovieTable.fromMap(result);
     } else {
@@ -48,9 +49,9 @@ class MovieLocalDataSourceImpl implements MovieLocalDataSource {
 
   @override
   Future<List<MovieTable>> getWatchlistMovies() async {
-    final result =
-        await databaseHelper.getWatchlistByMediaType(MovieTable.movieMediaType);
+    final result = await databaseHelper.getWatchlistByMediaType(
+      MovieTable.movieMediaType,
+    );
     return result.map((data) => MovieTable.fromMap(data)).toList();
   }
 }
-

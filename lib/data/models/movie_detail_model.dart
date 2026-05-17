@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:g/data/models/genre_model.dart';
 import 'package:g/domain/entities/movie_detail.dart';
@@ -56,7 +55,8 @@ class MovieDetailResponse extends Equatable {
         backdropPath: json["backdrop_path"],
         budget: json["budget"],
         genres: List<GenreModel>.from(
-            json["genres"].map((x) => GenreModel.fromJson(x))),
+          json["genres"].map((x) => GenreModel.fromJson(x)),
+        ),
         homepage: json["homepage"],
         id: json["id"],
         imdbId: json["imdb_id"],
@@ -77,28 +77,28 @@ class MovieDetailResponse extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-        "adult": adult,
-        "backdrop_path": backdropPath,
-        "budget": budget,
-        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
-        "homepage": homepage,
-        "id": id,
-        "imdb_id": imdbId,
-        "original_language": originalLanguage,
-        "original_title": originalTitle,
-        "overview": overview,
-        "popularity": popularity,
-        "poster_path": posterPath,
-        "release_date": releaseDate,
-        "revenue": revenue,
-        "runtime": runtime,
-        "status": status,
-        "tagline": tagline,
-        "title": title,
-        "video": video,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-      };
+    "adult": adult,
+    "backdrop_path": backdropPath,
+    "budget": budget,
+    "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
+    "homepage": homepage,
+    "id": id,
+    "imdb_id": imdbId,
+    "original_language": originalLanguage,
+    "original_title": originalTitle,
+    "overview": overview,
+    "popularity": popularity,
+    "poster_path": posterPath,
+    "release_date": releaseDate,
+    "revenue": revenue,
+    "runtime": runtime,
+    "status": status,
+    "tagline": tagline,
+    "title": title,
+    "video": video,
+    "vote_average": voteAverage,
+    "vote_count": voteCount,
+  };
 
   MovieDetail toEntity() {
     return MovieDetail(
@@ -120,27 +120,26 @@ class MovieDetailResponse extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => [
-        adult,
-        backdropPath,
-        budget,
-        genres,
-        homepage,
-        id,
-        imdbId,
-        originalLanguage,
-        originalTitle,
-        overview,
-        popularity,
-        posterPath,
-        releaseDate,
-        revenue,
-        runtime,
-        status,
-        tagline,
-        title,
-        video,
-        voteAverage,
-        voteCount,
-      ];
+    adult,
+    backdropPath,
+    budget,
+    genres,
+    homepage,
+    id,
+    imdbId,
+    originalLanguage,
+    originalTitle,
+    overview,
+    popularity,
+    posterPath,
+    releaseDate,
+    revenue,
+    runtime,
+    status,
+    tagline,
+    title,
+    video,
+    voteAverage,
+    voteCount,
+  ];
 }
-

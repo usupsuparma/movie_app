@@ -12,9 +12,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Search'),
-      ),
+      appBar: AppBar(title: Text('Search')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -32,10 +30,7 @@ class SearchPage extends StatelessWidget {
               textInputAction: TextInputAction.search,
             ),
             SizedBox(height: 16),
-            Text(
-              'Search Result',
-              style: kHeading6,
-            ),
+            Text('Search Result', style: kHeading6),
             BlocBuilder<MovieSearchBloc, MovieSearchState>(
               builder: (context, state) {
                 if (state is MovieSearchLoading) {
@@ -62,4 +57,3 @@ class SearchPage extends StatelessWidget {
     );
   }
 }
-

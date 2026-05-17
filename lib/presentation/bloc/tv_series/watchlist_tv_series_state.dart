@@ -8,6 +8,7 @@ abstract class WatchlistTvSeriesState extends Equatable {
 }
 
 class WatchlistTvSeriesEmpty extends WatchlistTvSeriesState {}
+
 class WatchlistTvSeriesLoading extends WatchlistTvSeriesState {}
 
 class WatchlistTvSeriesError extends WatchlistTvSeriesState {

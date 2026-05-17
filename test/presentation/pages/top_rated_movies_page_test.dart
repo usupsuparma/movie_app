@@ -23,8 +23,9 @@ void main() {
     );
   }
 
-  testWidgets('Page should display progress bar when loading',
-      (WidgetTester tester) async {
+  testWidgets('Page should display progress bar when loading', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       makeTestableWidget(TopRatedMoviesPage(), TopRatedMoviesLoading()),
     );
@@ -33,8 +34,9 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 
-  testWidgets('Page should display when data is loaded',
-      (WidgetTester tester) async {
+  testWidgets('Page should display when data is loaded', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       makeTestableWidget(TopRatedMoviesPage(), TopRatedMoviesLoaded(<Movie>[])),
     );
@@ -42,11 +44,14 @@ void main() {
     expect(find.byType(ListView), findsOneWidget);
   });
 
-  testWidgets('Page should display text with message when Error',
-      (WidgetTester tester) async {
+  testWidgets('Page should display text with message when Error', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       makeTestableWidget(
-          TopRatedMoviesPage(), TopRatedMoviesError('Error message')),
+        TopRatedMoviesPage(),
+        TopRatedMoviesError('Error message'),
+      ),
     );
 
     expect(find.byKey(const Key('error_message')), findsOneWidget);

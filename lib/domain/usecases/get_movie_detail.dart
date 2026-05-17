@@ -12,4 +12,3 @@ class GetMovieDetail {
     return repository.getMovieDetail(id);
   }
 }
-

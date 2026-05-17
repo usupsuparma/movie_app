@@ -15,8 +15,8 @@ void main() {
   });
 
   test('should remove TV series watchlist through the repository', () async {
-    repository.removeWatchlistHandler =
-        (_) async => const Right('Removed from Watchlist');
+    repository.removeWatchlistHandler = (_) async =>
+        const Right('Removed from Watchlist');
 
     final result = await usecase.execute(tTvSeriesDetail);
 

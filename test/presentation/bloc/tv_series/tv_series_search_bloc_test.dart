@@ -28,8 +28,9 @@ void main() {
     blocTest<TvSeriesSearchBloc, TvSeriesSearchState>(
       'emits [Loading, Loaded] when search succeeds',
       build: () {
-        when(() => mockSearchTvSeries.execute(tQuery))
-            .thenAnswer((_) async => Right(tTvSeriesList));
+        when(
+          () => mockSearchTvSeries.execute(tQuery),
+        ).thenAnswer((_) async => Right(tTvSeriesList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(const SearchTvSeriesEvent(tQuery)),
@@ -42,8 +43,9 @@ void main() {
     blocTest<TvSeriesSearchBloc, TvSeriesSearchState>(
       'emits [Loading, Error] when search fails',
       build: () {
-        when(() => mockSearchTvSeries.execute(tQuery))
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockSearchTvSeries.execute(tQuery),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(const SearchTvSeriesEvent(tQuery)),

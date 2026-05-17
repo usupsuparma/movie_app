@@ -26,8 +26,9 @@ void main() {
     blocTest<PopularMoviesBloc, PopularMoviesState>(
       'emits [Loading, Loaded] when fetch succeeds',
       build: () {
-        when(() => mockGetPopularMovies.execute())
-            .thenAnswer((_) async => Right(testMovieList));
+        when(
+          () => mockGetPopularMovies.execute(),
+        ).thenAnswer((_) async => Right(testMovieList));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchPopularMovies()),
@@ -40,8 +41,9 @@ void main() {
     blocTest<PopularMoviesBloc, PopularMoviesState>(
       'emits [Loading, Error] when fetch fails',
       build: () {
-        when(() => mockGetPopularMovies.execute())
-            .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+        when(
+          () => mockGetPopularMovies.execute(),
+        ).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
         return makeBloc();
       },
       act: (bloc) => bloc.add(FetchPopularMovies()),
