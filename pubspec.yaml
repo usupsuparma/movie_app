@@ -27,6 +27,8 @@ dev_dependencies:
   mockito: ^5.6.4
   build_runner: ^2.15.0
   sqflite_common_ffi: ^2.3.5
+  bloc_test: ^9.1.0
+  mocktail: ^1.0.0
 
 flutter:
   uses-material-design: true
