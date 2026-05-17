@@ -1,8 +1,14 @@
 
+import 'dart:async';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:g/common/constants.dart';
 import 'package:g/common/utils.dart';
+import 'package:g/firebase_options.dart';
 import 'package:g/presentation/pages/about_page.dart';
 import 'package:g/presentation/pages/home_movie_page.dart';
 import 'package:g/presentation/pages/home_tv_series_page.dart';
@@ -31,13 +37,33 @@ import 'package:g/presentation/bloc/tv_series/top_rated_tv_series_bloc.dart';
 import 'package:g/presentation/bloc/tv_series/watchlist_tv_series_bloc.dart';
 import 'package:g/injection.dart' as di;
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+  await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
+    !kDebugMode,
+  );
+
   await di.init();
-  runApp(MyApp());
+  runZonedGuarded(
+    () {
+      runApp(const MyApp());
+    },
+    (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    },
+  );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
