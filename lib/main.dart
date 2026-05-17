@@ -31,8 +31,9 @@ import 'package:g/presentation/bloc/tv_series/top_rated_tv_series_bloc.dart';
 import 'package:g/presentation/bloc/tv_series/watchlist_tv_series_bloc.dart';
 import 'package:g/injection.dart' as di;
 
-void main() {
-  di.init();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(MyApp());
 }
 

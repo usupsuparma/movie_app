@@ -1,6 +1,7 @@
 
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
+import 'package:g/common/ssl_pinning.dart';
 import 'package:g/data/datasources/db/database_helper.dart';
 import 'package:g/data/datasources/movie_local_data_source.dart';
 import 'package:g/data/datasources/movie_remote_data_source.dart';
@@ -44,7 +45,7 @@ import 'package:g/presentation/bloc/tv_series/top_rated_tv_series_bloc.dart';
 import 'package:g/presentation/bloc/tv_series/watchlist_tv_series_bloc.dart';
 final locator = GetIt.instance;
 
-void init() {
+Future<void> init() async {
   // bloc
   locator.registerFactory(
     () => MovieListBloc(
@@ -147,6 +148,7 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  final sslClient = await createSslPinnedClient();
+  locator.registerLazySingleton<http.Client>(() => sslClient);
 }
 
