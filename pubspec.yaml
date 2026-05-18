@@ -21,7 +21,6 @@ dependencies:
   flutter_bloc: ^9.1.1
   firebase_core: ^4.9.0
   firebase_crashlytics: ^5.2.2
-  flutter_dotenv: ^6.0.1
 
   bloc: ^9.2.1
   firebase_analytics: ^12.4.1
@@ -38,6 +37,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - .env
     - assets/
     - certificates/

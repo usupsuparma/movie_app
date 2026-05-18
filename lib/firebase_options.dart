@@ -3,7 +3,6 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-import 'package:movie_app/common/env.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -53,11 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static FirebaseOptions get android => FirebaseOptions(
-    apiKey: AppEnv.firebaseApiKey,
-    appId: AppEnv.firebaseAppId,
-    messagingSenderId: AppEnv.firebaseMessagingSenderId,
-    projectId: AppEnv.firebaseProjectId,
-    storageBucket: AppEnv.firebaseStorageBucket,
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyDHI6N0nR2susQYpkpzUtqy59K2Ar8kfd4',
+    appId: '1:3931541897:android:e6743e86387a4e08f11158',
+    messagingSenderId: '3931541897',
+    projectId: 'movie-app-37f8b',
+    storageBucket: 'movie-app-37f8b.firebasestorage.app',
   );
 }
