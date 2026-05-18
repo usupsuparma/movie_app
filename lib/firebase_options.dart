@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'movie-app-37f8b',
     storageBucket: 'movie-app-37f8b.firebasestorage.app',
   );
+
 }

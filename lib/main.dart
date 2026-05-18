@@ -50,7 +50,7 @@ void main() async {
     return true;
   };
   await di.init();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
