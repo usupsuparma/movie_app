@@ -36,28 +36,21 @@ import 'package:g/presentation/bloc/tv_series/top_rated_tv_series_bloc.dart';
 import 'package:g/presentation/bloc/tv_series/watchlist_tv_series_bloc.dart';
 import 'package:g/injection.dart' as di;
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
   PlatformDispatcher.instance.onError = (error, stack) {
+    print('Caught by onError: $error');
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
-  await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
-    !kDebugMode,
-  );
-
   await di.init();
-  runZonedGuarded(
-    () {
-      runApp(const MyApp());
-    },
-    (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    },
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
