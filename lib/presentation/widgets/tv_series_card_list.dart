@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:g/common/constants.dart';
-import 'package:g/domain/entities/tv_series.dart';
-import 'package:g/presentation/pages/tv_series_detail_page.dart';
+import 'package:movie_app/common/constants.dart';
+import 'package:movie_app/domain/entities/tv_series.dart';
+import 'package:movie_app/presentation/pages/tv_series_detail_page.dart';
 
 class TvSeriesCard extends StatelessWidget {
   const TvSeriesCard(this.tvSeries, {super.key});

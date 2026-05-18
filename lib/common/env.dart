@@ -18,5 +18,6 @@ class AppEnv {
 
   static String get firebaseProjectId => _required('FIREBASE_PROJECT_ID');
 
-  static String get firebaseStorageBucket => _required('FIREBASE_STORAGE_BUCKET');
+  static String get firebaseStorageBucket =>
+      _required('FIREBASE_STORAGE_BUCKET');
 }

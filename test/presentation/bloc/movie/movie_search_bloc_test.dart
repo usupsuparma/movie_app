@@ -1,11 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:g/common/failure.dart';
-import 'package:g/domain/usecases/search_movies.dart';
-import 'package:g/presentation/bloc/movie/movie_search_bloc.dart';
-import 'package:g/presentation/bloc/movie/movie_search_event.dart';
-import 'package:g/presentation/bloc/movie/movie_search_state.dart';
+import 'package:movie_app/common/failure.dart';
+import 'package:movie_app/domain/usecases/search_movies.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_search_bloc.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_search_event.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_search_state.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../dummy_data/dummy_objects.dart';

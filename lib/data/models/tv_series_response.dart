@@ -1,4 +1,4 @@
-import 'package:g/data/models/tv_series_model.dart';
+import 'package:movie_app/data/models/tv_series_model.dart';
 
 class TvSeriesResponse {
   const TvSeriesResponse({required this.tvSeriesList});

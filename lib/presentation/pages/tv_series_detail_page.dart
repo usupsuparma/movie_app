@@ -2,14 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:g/common/constants.dart';
-import 'package:g/domain/entities/genre.dart';
-import 'package:g/domain/entities/season.dart';
-import 'package:g/domain/entities/tv_series.dart';
-import 'package:g/domain/entities/tv_series_detail.dart';
-import 'package:g/presentation/bloc/tv_series/tv_series_detail_bloc.dart';
-import 'package:g/presentation/bloc/tv_series/tv_series_detail_event.dart';
-import 'package:g/presentation/bloc/tv_series/tv_series_detail_state.dart';
+import 'package:movie_app/common/constants.dart';
+import 'package:movie_app/domain/entities/genre.dart';
+import 'package:movie_app/domain/entities/season.dart';
+import 'package:movie_app/domain/entities/tv_series.dart';
+import 'package:movie_app/domain/entities/tv_series_detail.dart';
+import 'package:movie_app/presentation/bloc/tv_series/tv_series_detail_bloc.dart';
+import 'package:movie_app/presentation/bloc/tv_series/tv_series_detail_event.dart';
+import 'package:movie_app/presentation/bloc/tv_series/tv_series_detail_state.dart';
 
 class TvSeriesDetailPage extends StatefulWidget {
   static const routeName = '/tv-series-detail';

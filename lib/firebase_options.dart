@@ -3,7 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-import 'package:g/common/env.dart';
+import 'package:movie_app/common/env.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -54,10 +54,10 @@ class DefaultFirebaseOptions {
   }
 
   static FirebaseOptions get android => FirebaseOptions(
-        apiKey: AppEnv.firebaseApiKey,
-        appId: AppEnv.firebaseAppId,
-        messagingSenderId: AppEnv.firebaseMessagingSenderId,
-        projectId: AppEnv.firebaseProjectId,
-        storageBucket: AppEnv.firebaseStorageBucket,
-      );
+    apiKey: AppEnv.firebaseApiKey,
+    appId: AppEnv.firebaseAppId,
+    messagingSenderId: AppEnv.firebaseMessagingSenderId,
+    projectId: AppEnv.firebaseProjectId,
+    storageBucket: AppEnv.firebaseStorageBucket,
+  );
 }

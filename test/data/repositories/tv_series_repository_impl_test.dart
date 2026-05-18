@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:g/common/exception.dart';
-import 'package:g/common/failure.dart';
-import 'package:g/data/datasources/tv_series_local_data_source.dart';
-import 'package:g/data/datasources/tv_series_remote_data_source.dart';
-import 'package:g/data/models/tv_series_detail_model.dart';
-import 'package:g/data/models/tv_series_model.dart';
-import 'package:g/data/models/tv_series_table.dart';
-import 'package:g/data/repositories/tv_series_repository_impl.dart';
+import 'package:movie_app/common/exception.dart';
+import 'package:movie_app/common/failure.dart';
+import 'package:movie_app/data/datasources/tv_series_local_data_source.dart';
+import 'package:movie_app/data/datasources/tv_series_remote_data_source.dart';
+import 'package:movie_app/data/models/tv_series_detail_model.dart';
+import 'package:movie_app/data/models/tv_series_model.dart';
+import 'package:movie_app/data/models/tv_series_table.dart';
+import 'package:movie_app/data/repositories/tv_series_repository_impl.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 

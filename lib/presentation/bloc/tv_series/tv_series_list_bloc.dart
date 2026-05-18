@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:g/domain/usecases/get_on_the_air_tv_series.dart';
-import 'package:g/domain/usecases/get_popular_tv_series.dart';
-import 'package:g/domain/usecases/get_top_rated_tv_series.dart';
+import 'package:movie_app/domain/usecases/get_on_the_air_tv_series.dart';
+import 'package:movie_app/domain/usecases/get_popular_tv_series.dart';
+import 'package:movie_app/domain/usecases/get_top_rated_tv_series.dart';
 
 import 'tv_series_list_event.dart';
 import 'tv_series_list_state.dart';

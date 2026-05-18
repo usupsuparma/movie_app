@@ -1,19 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:g/common/constants.dart';
-import 'package:g/domain/entities/movie.dart';
-import 'package:g/presentation/bloc/movie/movie_list_bloc.dart';
-import 'package:g/presentation/bloc/movie/movie_list_event.dart';
-import 'package:g/presentation/bloc/movie/movie_list_state.dart';
-import 'package:g/presentation/pages/about_page.dart';
-import 'package:g/presentation/pages/home_tv_series_page.dart';
-import 'package:g/presentation/pages/movie_detail_page.dart';
-import 'package:g/presentation/pages/popular_movies_page.dart';
-import 'package:g/presentation/pages/search_page.dart';
-import 'package:g/presentation/pages/top_rated_movies_page.dart';
-import 'package:g/presentation/pages/watchlist_movies_page.dart';
-import 'package:g/presentation/pages/watchlist_tv_series_page.dart';
+import 'package:movie_app/common/constants.dart';
+import 'package:movie_app/domain/entities/movie.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_list_bloc.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_list_event.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_list_state.dart';
+import 'package:movie_app/presentation/pages/about_page.dart';
+import 'package:movie_app/presentation/pages/home_tv_series_page.dart';
+import 'package:movie_app/presentation/pages/movie_detail_page.dart';
+import 'package:movie_app/presentation/pages/popular_movies_page.dart';
+import 'package:movie_app/presentation/pages/search_page.dart';
+import 'package:movie_app/presentation/pages/top_rated_movies_page.dart';
+import 'package:movie_app/presentation/pages/watchlist_movies_page.dart';
+import 'package:movie_app/presentation/pages/watchlist_tv_series_page.dart';
 
 class HomeMoviePage extends StatefulWidget {
   const HomeMoviePage({super.key});

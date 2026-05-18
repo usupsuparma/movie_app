@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:g/domain/entities/movie.dart';
-import 'package:g/presentation/pages/movie_detail_page.dart';
-import 'package:g/presentation/widgets/movie_card_list.dart';
+import 'package:movie_app/domain/entities/movie.dart';
+import 'package:movie_app/presentation/pages/movie_detail_page.dart';
+import 'package:movie_app/presentation/widgets/movie_card_list.dart';
 
 class TestNavigatorObserver extends NavigatorObserver {
   int pushCount = 0;

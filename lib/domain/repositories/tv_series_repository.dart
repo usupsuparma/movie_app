@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:g/common/failure.dart';
-import 'package:g/domain/entities/tv_series.dart';
-import 'package:g/domain/entities/tv_series_detail.dart';
+import 'package:movie_app/common/failure.dart';
+import 'package:movie_app/domain/entities/tv_series.dart';
+import 'package:movie_app/domain/entities/tv_series_detail.dart';
 
 abstract class TvSeriesRepository {
   Future<Either<Failure, List<TvSeries>>> getOnTheAirTvSeries();

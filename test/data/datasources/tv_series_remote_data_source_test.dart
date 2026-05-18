@@ -3,8 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:g/common/exception.dart';
-import 'package:g/data/datasources/tv_series_remote_data_source.dart';
+import 'package:movie_app/common/exception.dart';
+import 'package:movie_app/data/datasources/tv_series_remote_data_source.dart';
 
 class FakeHttpClient extends http.BaseClient {
   final Map<String, http.Response> responses = {};

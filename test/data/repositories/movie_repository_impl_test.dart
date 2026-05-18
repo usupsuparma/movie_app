@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:g/data/models/genre_model.dart';
-import 'package:g/data/models/movie_detail_model.dart';
-import 'package:g/data/models/movie_model.dart';
-import 'package:g/data/repositories/movie_repository_impl.dart';
-import 'package:g/common/exception.dart';
-import 'package:g/common/failure.dart';
-import 'package:g/domain/entities/movie.dart';
+import 'package:movie_app/data/models/genre_model.dart';
+import 'package:movie_app/data/models/movie_detail_model.dart';
+import 'package:movie_app/data/models/movie_model.dart';
+import 'package:movie_app/data/repositories/movie_repository_impl.dart';
+import 'package:movie_app/common/exception.dart';
+import 'package:movie_app/common/failure.dart';
+import 'package:movie_app/domain/entities/movie.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

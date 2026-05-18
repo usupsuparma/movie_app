@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:g/common/constants.dart';
+import 'package:movie_app/common/constants.dart';
 
 void main() {
   group('Constants', () {

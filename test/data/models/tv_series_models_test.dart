@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:g/data/models/genre_model.dart';
-import 'package:g/data/models/season_model.dart';
-import 'package:g/data/models/tv_series_detail_model.dart';
-import 'package:g/data/models/tv_series_model.dart';
-import 'package:g/domain/entities/genre.dart';
-import 'package:g/domain/entities/season.dart';
-import 'package:g/domain/entities/tv_series.dart';
-import 'package:g/domain/entities/tv_series_detail.dart';
+import 'package:movie_app/data/models/genre_model.dart';
+import 'package:movie_app/data/models/season_model.dart';
+import 'package:movie_app/data/models/tv_series_detail_model.dart';
+import 'package:movie_app/data/models/tv_series_model.dart';
+import 'package:movie_app/domain/entities/genre.dart';
+import 'package:movie_app/domain/entities/season.dart';
+import 'package:movie_app/domain/entities/tv_series.dart';
+import 'package:movie_app/domain/entities/tv_series_detail.dart';
 
 void main() {
   test('TvSeriesModel should parse json and convert to entity', () {

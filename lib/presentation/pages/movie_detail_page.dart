@@ -2,13 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:g/common/constants.dart';
-import 'package:g/domain/entities/genre.dart';
-import 'package:g/domain/entities/movie.dart';
-import 'package:g/domain/entities/movie_detail.dart';
-import 'package:g/presentation/bloc/movie/movie_detail_bloc.dart';
-import 'package:g/presentation/bloc/movie/movie_detail_event.dart';
-import 'package:g/presentation/bloc/movie/movie_detail_state.dart';
+import 'package:movie_app/common/constants.dart';
+import 'package:movie_app/domain/entities/genre.dart';
+import 'package:movie_app/domain/entities/movie.dart';
+import 'package:movie_app/domain/entities/movie_detail.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_detail_bloc.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_detail_event.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_detail_state.dart';
 
 class MovieDetailPage extends StatefulWidget {
   static const routeName = '/detail';

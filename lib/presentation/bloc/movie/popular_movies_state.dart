@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:g/domain/entities/movie.dart';
+import 'package:movie_app/domain/entities/movie.dart';
 
 abstract class PopularMoviesState extends Equatable {
   const PopularMoviesState();

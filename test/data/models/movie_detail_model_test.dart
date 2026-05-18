@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:g/data/models/genre_model.dart';
-import 'package:g/data/models/movie_detail_model.dart';
-import 'package:g/domain/entities/genre.dart';
-import 'package:g/domain/entities/movie_detail.dart';
+import 'package:movie_app/data/models/genre_model.dart';
+import 'package:movie_app/data/models/movie_detail_model.dart';
+import 'package:movie_app/domain/entities/genre.dart';
+import 'package:movie_app/domain/entities/movie_detail.dart';
 
 void main() {
   test('MovieDetailResponse should parse json and convert to entity', () {

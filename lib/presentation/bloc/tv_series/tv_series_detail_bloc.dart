@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:g/domain/entities/tv_series_detail.dart';
-import 'package:g/domain/usecases/get_tv_series_detail.dart';
-import 'package:g/domain/usecases/get_tv_series_recommendations.dart';
-import 'package:g/domain/usecases/get_watchlist_status_tv_series.dart';
-import 'package:g/domain/usecases/remove_watchlist_tv_series.dart';
-import 'package:g/domain/usecases/save_watchlist_tv_series.dart';
+import 'package:movie_app/domain/entities/tv_series_detail.dart';
+import 'package:movie_app/domain/usecases/get_tv_series_detail.dart';
+import 'package:movie_app/domain/usecases/get_tv_series_recommendations.dart';
+import 'package:movie_app/domain/usecases/get_watchlist_status_tv_series.dart';
+import 'package:movie_app/domain/usecases/remove_watchlist_tv_series.dart';
+import 'package:movie_app/domain/usecases/save_watchlist_tv_series.dart';
 
 import 'tv_series_detail_event.dart';
 import 'tv_series_detail_state.dart';

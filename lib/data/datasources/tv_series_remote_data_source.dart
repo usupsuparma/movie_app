@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:g/common/exception.dart';
-import 'package:g/data/models/tv_series_detail_model.dart';
-import 'package:g/data/models/tv_series_model.dart';
-import 'package:g/data/models/tv_series_response.dart';
+import 'package:movie_app/common/exception.dart';
+import 'package:movie_app/data/models/tv_series_detail_model.dart';
+import 'package:movie_app/data/models/tv_series_model.dart';
+import 'package:movie_app/data/models/tv_series_response.dart';
 
 abstract class TvSeriesRemoteDataSource {
   Future<List<TvSeriesModel>> getOnTheAirTvSeries();

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:g/data/models/movie_model.dart';
+import 'package:movie_app/data/models/movie_model.dart';
 
 class MovieResponse extends Equatable {
   final List<MovieModel> movieList;

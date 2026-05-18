@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:g/common/ssl_pinning.dart';
+import 'package:movie_app/common/ssl_pinning.dart';
 import 'package:http/io_client.dart';
 
 void main() {

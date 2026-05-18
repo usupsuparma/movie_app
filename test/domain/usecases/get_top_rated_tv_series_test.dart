@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:g/domain/usecases/get_top_rated_tv_series.dart';
+import 'package:movie_app/domain/usecases/get_top_rated_tv_series.dart';
 
 import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/fake_tv_series_repository.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:g/common/constants.dart';
-import 'package:g/presentation/bloc/movie/movie_search_bloc.dart';
-import 'package:g/presentation/bloc/movie/movie_search_event.dart';
-import 'package:g/presentation/bloc/movie/movie_search_state.dart';
-import 'package:g/presentation/widgets/movie_card_list.dart';
+import 'package:movie_app/common/constants.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_search_bloc.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_search_event.dart';
+import 'package:movie_app/presentation/bloc/movie/movie_search_state.dart';
+import 'package:movie_app/presentation/widgets/movie_card_list.dart';
 
 class SearchPage extends StatelessWidget {
   static const routeName = '/search';

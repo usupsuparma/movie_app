@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:g/common/constants.dart';
+import 'package:movie_app/common/constants.dart';
 
 class AboutPage extends StatelessWidget {
   static const routeName = '/about';

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:g/domain/usecases/search_tv_series.dart';
+import 'package:movie_app/domain/usecases/search_tv_series.dart';
 
 import 'tv_series_search_event.dart';
 import 'tv_series_search_state.dart';

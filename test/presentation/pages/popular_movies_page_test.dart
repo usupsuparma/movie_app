@@ -1,9 +1,9 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:g/domain/entities/movie.dart';
-import 'package:g/presentation/bloc/movie/popular_movies_bloc.dart';
-import 'package:g/presentation/bloc/movie/popular_movies_event.dart';
-import 'package:g/presentation/bloc/movie/popular_movies_state.dart';
-import 'package:g/presentation/pages/popular_movies_page.dart';
+import 'package:movie_app/domain/entities/movie.dart';
+import 'package:movie_app/presentation/bloc/movie/popular_movies_bloc.dart';
+import 'package:movie_app/presentation/bloc/movie/popular_movies_event.dart';
+import 'package:movie_app/presentation/bloc/movie/popular_movies_state.dart';
+import 'package:movie_app/presentation/pages/popular_movies_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';

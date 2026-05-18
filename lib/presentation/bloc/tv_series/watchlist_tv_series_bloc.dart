@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:g/domain/usecases/get_watchlist_tv_series.dart';
+import 'package:movie_app/domain/usecases/get_watchlist_tv_series.dart';
 
 import 'watchlist_tv_series_event.dart';
 import 'watchlist_tv_series_state.dart';
