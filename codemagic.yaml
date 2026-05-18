@@ -4,12 +4,11 @@ workflows:
     max_build_duration: 60
     environment:
       flutter: stable
-      groups:
-        - firebase  # grup yang berisi GOOGLE_SERVICES_JSON
     scripts:
       - name: Decode google-services.json
         script: |
-          echo $GOOGLE_SERVICES_JSON | base64 --decode > $CM_BUILD_DIR/android/app/google-services.json
+          echo $GOOGLE_SERVICES_JSON | base64 --decode > android/app/google-services.json
+          echo "google-services.json written to: $(pwd)/android/app/google-services.json"
       - name: Get Flutter packages
         script: flutter pub get
       - name: Build APK
