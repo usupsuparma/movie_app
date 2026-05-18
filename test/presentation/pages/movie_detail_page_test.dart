@@ -177,7 +177,7 @@ void main() {
       when(() => bloc.state).thenReturn(initialState);
       final controller = StreamController<MovieDetailState>.broadcast();
       when(() => bloc.stream).thenAnswer((_) => controller.stream);
-      when(() => bloc.add(any())).thenAnswer((_) => controller.add(nextState));
+      when(() => bloc.add(any())).thenReturn(null);
 
       await tester.pumpWidget(
         BlocProvider<MovieDetailBloc>.value(
@@ -187,8 +187,14 @@ void main() {
       );
 
       expect(find.byIcon(Icons.add), findsOneWidget);
+      final watchlistButton = find.widgetWithText(FilledButton, 'Watchlist');
+      await tester.ensureVisible(watchlistButton);
+      await tester.pump();
 
-      await tester.tap(find.byType(FilledButton));
+      await tester.tap(watchlistButton);
+      await tester.pump();
+      verify(() => bloc.add(any(that: isA<AddMovieWatchlist>()))).called(1);
+      controller.add(nextState);
       await tester.pump();
 
       expect(find.byType(SnackBar), findsOneWidget);
@@ -221,7 +227,7 @@ void main() {
       when(() => bloc.state).thenReturn(initialState);
       final controller = StreamController<MovieDetailState>.broadcast();
       when(() => bloc.stream).thenAnswer((_) => controller.stream);
-      when(() => bloc.add(any())).thenAnswer((_) => controller.add(nextState));
+      when(() => bloc.add(any())).thenReturn(null);
 
       await tester.pumpWidget(
         BlocProvider<MovieDetailBloc>.value(
@@ -231,8 +237,15 @@ void main() {
       );
 
       expect(find.byIcon(Icons.add), findsOneWidget);
+      final watchlistButton = find.widgetWithText(FilledButton, 'Watchlist');
+      await tester.ensureVisible(watchlistButton);
+      await tester.pump();
 
-      await tester.tap(find.byType(FilledButton));
+      await tester.tap(watchlistButton);
+      await tester.pump();
+      verify(() => bloc.add(any(that: isA<AddMovieWatchlist>()))).called(1);
+      controller.add(nextState);
+      await tester.pump();
       await tester.pump();
 
       expect(find.byType(AlertDialog), findsOneWidget);
